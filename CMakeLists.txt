@@ -42,8 +42,6 @@ file(GLOB_RECURSE STUDENT_SRCS
 
 # Exclude simulator library files
 list(FILTER STUDENT_SRCS EXCLUDE REGEX "src/simulator_libraries/.*")
-list(FILTER STUDENT_SRCS EXCLUDE REGEX "./cmake-build-debug/.*")
-
 
 # Compile the library object files
 add_library(LibraryObjects OBJECT ${LIBRARY_SRCS})
