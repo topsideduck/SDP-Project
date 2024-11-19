@@ -47,7 +47,9 @@ list(FILTER STUDENT_SRCS EXCLUDE REGEX "src/lib/.*")
 add_library(LibraryObjects OBJECT ${LIBRARY_SRCS})
 
 # Compile the student files
-add_library(StudentObjects OBJECT ${STUDENT_SRCS})
+add_library(StudentObjects OBJECT ${STUDENT_SRCS}
+        src/menu/main_menu.cpp
+        src/menu/main_menu.h)
 
 # Link the final executable
 add_executable(${EXECUTABLE} $<TARGET_OBJECTS:LibraryObjects> $<TARGET_OBJECTS:StudentObjects>)
