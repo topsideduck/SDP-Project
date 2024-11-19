@@ -9,9 +9,14 @@ namespace game
 {
     class MainMenu
     {
+    public:
         MainMenu();
 
         ~MainMenu();
+
+        static void draw_main_menu();
+
+        static void open_quit_menu();
     };
 } // game
 
