@@ -37,3 +37,8 @@
 # CMake Builds
 cmake-build-debug
 cmake-build-release
+
+# Make Builds
+game
+game.out
+game.exe
