@@ -15,7 +15,7 @@ else
 	else
 		LDFLAGS = `pkg-config --libs --cflags opengl x11 glx`
 	endif
-	EXEC = game.out
+	EXEC = game
 endif
 
 # This is a recursive implementation of the wildcard function provided by gnu.
