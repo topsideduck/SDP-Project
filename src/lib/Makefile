@@ -1,5 +1,5 @@
 CC = g++
-CPPFLAGS = -MMD -MP -Os -DOBJC_OLD_DISPATCH_PROTOTYPES -g
+CPPFLAGS = -MMD -MP -Os -DOBJC_OLD_DISPATCH_PROTOTYPES -g --std=c++20
 IGNORED_WARNINGS = -w
 INC_DIRS = -I. -I..
 #if new libraries are added, add them here
