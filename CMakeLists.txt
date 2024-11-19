@@ -41,7 +41,7 @@ file(GLOB_RECURSE STUDENT_SRCS
 )
 
 # Exclude simulator library files
-list(FILTER STUDENT_SRCS EXCLUDE REGEX "src/lib /.*")
+list(FILTER STUDENT_SRCS EXCLUDE REGEX "src/lib/.*")
 
 # Compile the library object files
 add_library(LibraryObjects OBJECT ${LIBRARY_SRCS})
