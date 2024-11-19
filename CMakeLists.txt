@@ -49,7 +49,13 @@ add_library(LibraryObjects OBJECT ${LIBRARY_SRCS})
 # Compile the student files
 add_library(StudentObjects OBJECT ${STUDENT_SRCS}
         src/menu/main_menu.cpp
-        src/menu/main_menu.h)
+        src/menu/main_menu.h
+        src/menu/quit_menu.cpp
+        src/menu/quit_menu.h
+        src/util/input.cpp
+        src/util/input.h
+        src/util/constants.h
+)
 
 # Link the final executable
 add_executable(${EXECUTABLE} $<TARGET_OBJECTS:LibraryObjects> $<TARGET_OBJECTS:StudentObjects>)
