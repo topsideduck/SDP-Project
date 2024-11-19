@@ -1,4 +1,4 @@
-#include "simulator_libraries/FEHLCD.h"
+#include "lib/FEHLCD.h"
 
 int main()
 {

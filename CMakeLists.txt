@@ -27,12 +27,12 @@ endif ()
 
 # Library sources
 set(LIBRARY_SRCS
-        src/simulator_libraries/FEHLCD.cpp
-        src/simulator_libraries/FEHRandom.cpp
-        src/simulator_libraries/FEHSD.cpp
-        src/simulator_libraries/tigr.c
-        src/simulator_libraries/FEHUtility.cpp
-        src/simulator_libraries/FEHImages.cpp
+        src/lib/FEHLCD.cpp
+        src/lib/FEHRandom.cpp
+        src/lib/FEHSD.cpp
+        src/lib/tigr.c
+        src/lib/FEHUtility.cpp
+        src/lib/FEHImages.cpp
 )
 
 # Get all student source files recursively from the parent directory
@@ -41,7 +41,7 @@ file(GLOB_RECURSE STUDENT_SRCS
 )
 
 # Exclude simulator library files
-list(FILTER STUDENT_SRCS EXCLUDE REGEX "src/simulator_libraries/.*")
+list(FILTER STUDENT_SRCS EXCLUDE REGEX "src/lib /.*")
 
 # Compile the library object files
 add_library(LibraryObjects OBJECT ${LIBRARY_SRCS})

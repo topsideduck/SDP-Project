@@ -25,7 +25,7 @@ recursiveWildcard=$(foreach d,$(wildcard $(1:=/*)),$(call recursiveWildcard,$d,$
 
 # Gets all of the source files (.cpp) in the parent directory and its children folders, 
 # excluding the files we have in here, as those get built in the libraries target.
-STUDENT_CPP_FILES := $(filter-out ../simulator_libraries/%, $(call recursiveWildcard, .., *.cpp))
+STUDENT_CPP_FILES := $(filter-out ../lib/%, $(call recursiveWildcard, .., *.cpp))
 
 # When we compile student .cpp files in the studentFiles target, the .o object files are placed in this directory.
 # So this list, used in linking in the all target below, replaces the .cpp extension from the source files, and then strips the 

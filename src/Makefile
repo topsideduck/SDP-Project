@@ -1,6 +1,6 @@
 GITBINARY := git
 PINGURL := google.com
-LIBRARYREPO := simulator_libraries
+LIBRARYREPO := lib
 
 ifeq ($(OS),Windows_NT)	
 	SHELL := CMD
