@@ -59,6 +59,8 @@ add_library(StudentObjects OBJECT ${STUDENT_SRCS}
         src/menu/credits_menu.h
         src/menu/controls_menu.cpp
         src/menu/controls_menu.h
+        src/menu/instructions_menu.cpp
+        src/menu/instructions_menu.h
 )
 
 # Link the final executable
