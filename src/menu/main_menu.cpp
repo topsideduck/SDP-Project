@@ -7,6 +7,7 @@
 #include "src/lib/FEHImages.h"
 #include "src/menu/controls_menu.h"
 #include "src/menu/credits_menu.h"
+#include "src/menu/instructions_menu.h"
 #include "src/menu/quit_menu.h"
 #include "src/util/constants.h"
 #include "src/util/input.h"
@@ -27,6 +28,7 @@ namespace game
         LCD.Update();
 
         bool
+                open_instructions_menu_button_clicked = false,
                 open_controls_menu_button_clicked = false,
                 open_credits_menu_button_clicked = false,
                 open_quit_menu_button_clicked = false;
@@ -34,6 +36,16 @@ namespace game
         while (true)
         {
             auto [x_coordinate, y_coordinate] = get_input_coordinates();
+
+            if (x_coordinate >= MAIN_MENU_INSTRUCTIONS_BUTTON_X_COORDINATE && x_coordinate <=
+                MAIN_MENU_INSTRUCTIONS_BUTTON_X_COORDINATE + MAIN_MENU_INSTRUCTIONS_BUTTON_X_SIZE && y_coordinate >=
+                MAIN_MENU_INSTRUCTIONS_BUTTON_Y_COORDINATE && y_coordinate <= MAIN_MENU_INSTRUCTIONS_BUTTON_Y_COORDINATE
+                +
+                MAIN_MENU_INSTRUCTIONS_BUTTON_Y_SIZE)
+            {
+                open_instructions_menu_button_clicked = true;
+                break;
+            }
 
             if (x_coordinate >= MAIN_MENU_CONTROLS_BUTTON_X_COORDINATE && x_coordinate <=
                 MAIN_MENU_CONTROLS_BUTTON_X_COORDINATE + MAIN_MENU_CONTROLS_BUTTON_X_SIZE && y_coordinate >=
@@ -62,7 +74,12 @@ namespace game
             }
         }
 
-        if (open_controls_menu_button_clicked)
+        if (open_instructions_menu_button_clicked)
+        {
+            open_instructions_menu();
+        }
+
+        else if (open_controls_menu_button_clicked)
         {
             open_controls_menu();
         }
@@ -91,5 +108,10 @@ namespace game
     void MainMenu::open_controls_menu()
     {
         ControlsMenu::draw_controls_menu();
+    }
+
+    void MainMenu::open_instructions_menu()
+    {
+        InstructionsMenu::draw_instructions_menu();
     }
 } // game
