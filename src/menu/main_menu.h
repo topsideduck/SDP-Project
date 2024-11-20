@@ -19,6 +19,8 @@ namespace game
         static void open_quit_menu();
 
         static void open_credits_menu();
+
+        static void open_controls_menu();
     };
 } // game
 
