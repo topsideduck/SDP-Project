@@ -6,8 +6,8 @@
 #define CONSTANTS_H
 
 #define MAIN_MENU_IMAGE_FILE_PATH "assets/menus/main_menu.png"
-#define QUIT_MENU_IMAGE_FILE_PATH "assets/menus/controls_menu.png"
-#define QUIT_MENU_IMAGE_FILE_PATH "assets/menus/options_menu.png"
+#define CONTROLS_MENU_IMAGE_FILE_PATH "assets/menus/controls_menu.png"
+#define OPTIONS_MENU_IMAGE_FILE_PATH "assets/menus/options_menu.png"
 #define QUIT_MENU_IMAGE_FILE_PATH "assets/menus/quit_menu.png"
 
 // MAIN MENU
@@ -50,6 +50,15 @@
 #define QUIT_MENU_QUIT_BUTTON_Y_COORDINATE 165.8
 #define QUIT_MENU_QUIT_BUTTON_X_SIZE 100
 #define QUIT_MENU_QUIT_BUTTON_Y_SIZE 20
+
+
+// CONTROLS MENU
+
+// Define controls menu back button dimensions
+#define CONTROLS_MENU_BACK_BUTTON_X_COORDINATE 110
+#define CONTROLS_MENU_BACK_BUTTON_Y_COORDINATE 196
+#define CONTROLS_MENU_BACK_BUTTON_X_SIZE 100
+#define CONTROLS_MENU_BACK_BUTTON_Y_SIZE 20
 
 
 // OPTIONS MENU
