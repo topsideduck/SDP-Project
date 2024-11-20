@@ -5,12 +5,12 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-#define MAIN_MENU_IMAGE_FILE_PATH "assets/menus/main_menu.png"
-#define CONTROLS_MENU_IMAGE_FILE_PATH "assets/menus/controls_menu.png"
-#define OPTIONS_MENU_IMAGE_FILE_PATH "assets/menus/options_menu.png"
-#define QUIT_MENU_IMAGE_FILE_PATH "assets/menus/quit_menu.png"
+// #define STATISTICS_MENU_IMAGE_FILE_PATH "assets/menus/statistics_menu.png"
+
 
 // MAIN MENU
+
+#define MAIN_MENU_IMAGE_FILE_PATH "assets/menus/main_menu.png"
 
 // Define details of the play button on the main menu
 #define MAIN_MENU_PLAY_BUTTON_X_COORDINATE 25
@@ -51,6 +51,8 @@
 
 // INSTRUCTIONS MENU
 
+#define INSTRUCTIONS_MENU_IMAGE_FILE_PATH "assets/menus/instructions_menu.png"
+
 // Define instructions menu back button dimensions
 #define INSTRUCTIONS_MENU_BACK_BUTTON_X_COORDINATE 110
 #define INSTRUCTIONS_MENU_BACK_BUTTON_Y_COORDINATE 196
@@ -59,6 +61,8 @@
 
 
 // CONTROLS MENU
+
+#define CONTROLS_MENU_IMAGE_FILE_PATH "assets/menus/controls_menu.png"
 
 // Define controls menu back button dimensions
 #define CONTROLS_MENU_BACK_BUTTON_X_COORDINATE 110
@@ -82,6 +86,8 @@
 
 
 // QUIT MENU
+
+#define QUIT_MENU_IMAGE_FILE_PATH "assets/menus/quit_menu.png"
 
 // Define details of the stay button on the quit menu
 #define QUIT_MENU_STAY_BUTTON_X_COORDINATE 110
