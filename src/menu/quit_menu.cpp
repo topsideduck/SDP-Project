@@ -18,6 +18,7 @@ namespace game
     void QuitMenu::draw_quit_menu()
     {
         LCD.Clear();
+
         FEHImage quit_menu_image{QUIT_MENU_IMAGE_FILE_PATH};
         quit_menu_image.Draw(0, 0);
 
