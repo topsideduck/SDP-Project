@@ -5,25 +5,79 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-#define MAIN_MENU_IMAGE_FILE_PATH "assets/main_menu.png"
-#define QUIT_MENU_IMAGE_FILE_PATH "assets/quit_menu.png"
+#define MAIN_MENU_IMAGE_FILE_PATH "assets/menus/main_menu.png"
+#define QUIT_MENU_IMAGE_FILE_PATH "assets/menus/controls_menu.png"
+#define QUIT_MENU_IMAGE_FILE_PATH "assets/menus/options_menu.png"
+#define QUIT_MENU_IMAGE_FILE_PATH "assets/menus/quit_menu.png"
+
+// MAIN MENU
+
+// Define details of the controls button on the main menu
+#define MAIN_MENU_CONTROLS_BUTTON_X_COORDINATE 172.7
+#define MAIN_MENU_CONTROLS_BUTTON_Y_COORDINATE 134.3
+#define MAIN_MENU_CONTROLS_BUTTON_X_SIZE 100
+#define MAIN_MENU_CONTROLS_BUTTON_Y_SIZE 20
+
+// Define details of the options button on the main menu
+#define MAIN_MENU_OPTIONS_BUTTON_X_COORDINATE 47.3
+#define MAIN_MENU_OPTIONS_BUTTON_Y_COORDINATE 167.3
+#define MAIN_MENU_OPTIONS_BUTTON_X_SIZE 100
+#define MAIN_MENU_OPTIONS_BUTTON_Y_SIZE 20
+
+// Define details of the credits button on the main menu
+#define MAIN_MENU_CREDITS_BUTTON_X_COORDINATE 47.3
+#define MAIN_MENU_CREDITS_BUTTON_Y_COORDINATE 200.3
+#define MAIN_MENU_CREDITS_BUTTON_X_SIZE 100
+#define MAIN_MENU_CREDITS_BUTTON_Y_SIZE 20
 
 // Define details of the quit button on the main menu
-#define MAIN_MENU_QUIT_BUTTON_X_COORDINATE 80
-#define MAIN_MENU_QUIT_BUTTON_Y_COORDINATE 195
-#define MAIN_MENU_QUIT_BUTTON_X_SIZE 160
-#define MAIN_MENU_QUIT_BUTTON_Y_SIZE 25
+#define MAIN_MENU_QUIT_BUTTON_X_COORDINATE 172.7
+#define MAIN_MENU_QUIT_BUTTON_Y_COORDINATE 200.3
+#define MAIN_MENU_QUIT_BUTTON_X_SIZE 100
+#define MAIN_MENU_QUIT_BUTTON_Y_SIZE 20
 
-// Define details of the yes button on the quit menu
-#define QUIT_MENU_YES_BUTTON_X_COORDINATE 80
-#define QUIT_MENU_YES_BUTTON_Y_COORDINATE 125
-#define QUIT_MENU_YES_BUTTON_X_SIZE 160
-#define QUIT_MENU_YES_BUTTON_Y_SIZE 25
 
-// Define details of the no button on the quit menu
-#define QUIT_MENU_NO_BUTTON_X_COORDINATE 80
-#define QUIT_MENU_NO_BUTTON_Y_COORDINATE 165
-#define QUIT_MENU_NO_BUTTON_X_SIZE 160
-#define QUIT_MENU_NO_BUTTON_Y_SIZE 25
+// QUIT MENU
+
+// Define details of the stay button on the quit menu
+#define QUIT_MENU_STAY_BUTTON_X_COORDINATE 110
+#define QUIT_MENU_STAY_BUTTON_Y_COORDINATE 132.8
+#define QUIT_MENU_STAY_BUTTON_X_SIZE 100
+#define QUIT_MENU_STAY_BUTTON_Y_SIZE 20
+
+// Define details of the quit button on the quit menu
+#define QUIT_MENU_QUIT_BUTTON_X_COORDINATE 110
+#define QUIT_MENU_QUIT_BUTTON_Y_COORDINATE 165.8
+#define QUIT_MENU_QUIT_BUTTON_X_SIZE 100
+#define QUIT_MENU_QUIT_BUTTON_Y_SIZE 20
+
+
+// OPTIONS MENU
+
+// Define folder icon dimensions
+#define OPTIONS_MENU_FOLDER_BUTTON_X_COORDINATE 275
+#define OPTIONS_MENU_FOLDER_BUTTON_Y_COORDINATE 110
+#define OPTIONS_MENU_FOLDER_BUTTON_X_SIZE 20
+#define OPTIONS_MENU_FOLDER_BUTTON_Y_SIZE 16
+
+// Define music path label dimensions
+#define OPTIONS_MENU_MUSIC_PATH_TEXT_X_COORDINATE 110
+#define OPTIONS_MENU_MUSIC_PATH_TEXT_Y_COORDINATE 120
+#define OPTIONS_MENU_MUSIC_PATH_TEXT_X_SIZE 150
+#define OPTIONS_MENU_MUSIC_PATH_TEXT_Y_SIZE 16
+
+
+// CREDITS MENU
+
+// Define credits menu frame constants
+#define CREDITS_MENU_VIDEO_NUMBER_OF_FRAMES 224
+#define CREDITS_MENU_VIDEO_FRAME_RATE 30
+#define CREDITS_MENU_VIDEO_FRAMES_PATH "assets/menus/credits/"
+
+// Define credits menu back button dimensions
+#define CREDITS_MENU_BACK_BUTTON_X_COORDINATE 110
+#define CREDITS_MENU_BACK_BUTTON_Y_COORDINATE 208.4
+#define CREDITS_MENU_BACK_BUTTON_X_SIZE 100
+#define CREDITS_MENU_BACK_BUTTON_Y_SIZE 20
 
 #endif //CONSTANTS_H
