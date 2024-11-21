@@ -4,13 +4,13 @@
 
 #include "src/menu/main_menu.h"          // Include the header for the MainMenu class
 
-#include "src/menu/play_game_menu.h"     // Include the play game menu for navigation
-#include "src/menu/statistics_menu.h"    // Include the statistics menu for navigation
 #include "src/lib/FEHImages.h"           // For displaying images on the LCD
 #include "src/menu/controls_menu.h"      // Include the controls menu for navigation
 #include "src/menu/credits_menu.h"       // Include the credits menu for navigation
 #include "src/menu/instructions_menu.h"  // Include the instructions menu for navigation
+#include "src/menu/play_game_menu.h"     // Include the play game menu for navigation
 #include "src/menu/quit_menu.h"          // Include the quit menu for navigation
+#include "src/menu/statistics_menu.h"    // Include the statistics menu for navigation
 #include "src/util/constants.h"          // Constants for button positions and sizes
 #include "src/util/input.h"              // For handling input
 
