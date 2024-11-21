@@ -12,11 +12,11 @@
 
 #define MAIN_MENU_IMAGE_FILE_PATH "assets/menus/main_menu.png"
 
-// Define details of the play button on the main menu
-#define MAIN_MENU_PLAY_BUTTON_X_COORDINATE 25
-#define MAIN_MENU_PLAY_BUTTON_Y_COORDINATE 135
-#define MAIN_MENU_PLAY_BUTTON_X_SIZE 130
-#define MAIN_MENU_PLAY_BUTTON_Y_SIZE 20
+// Define details of the play game button on the main menu
+#define MAIN_MENU_PLAY_GAME_BUTTON_X_COORDINATE 25
+#define MAIN_MENU_PLAY_GAME_BUTTON_Y_COORDINATE 135
+#define MAIN_MENU_PLAY_GAME_BUTTON_X_SIZE 130
+#define MAIN_MENU_PLAY_GAME_BUTTON_Y_SIZE 20
 
 // Define details of the instructions button on the main menu
 #define MAIN_MENU_INSTRUCTIONS_BUTTON_X_COORDINATE 165
@@ -49,6 +49,17 @@
 #define MAIN_MENU_QUIT_BUTTON_Y_SIZE 20
 
 
+// PLAY GAME MENU
+
+#define PLAY_GAME_MENU_IMAGE_FILE_PATH "assets/menus/play_game_menu.png"
+
+// Define play game menu back button dimensions
+#define PLAY_GAME_MENU_BACK_BUTTON_X_COORDINATE 110
+#define PLAY_GAME_MENU_BACK_BUTTON_Y_COORDINATE 196
+#define PLAY_GAME_MENU_BACK_BUTTON_X_SIZE 100
+#define PLAY_GAME_MENU_BACK_BUTTON_Y_SIZE 20
+
+
 // INSTRUCTIONS MENU
 
 #define INSTRUCTIONS_MENU_IMAGE_FILE_PATH "assets/menus/instructions_menu.png"
@@ -71,7 +82,7 @@
 #define CONTROLS_MENU_BACK_BUTTON_Y_SIZE 20
 
 
-// CONTROLS MENU
+// STATISTICS MENU
 
 #define STATISTICS_MENU_IMAGE_FILE_PATH "assets/menus/statistics_menu.png"
 
