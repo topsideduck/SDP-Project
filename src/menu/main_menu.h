@@ -16,13 +16,15 @@ namespace game
 
         static void draw_main_menu();
 
-        static void open_quit_menu();
-
-        static void open_credits_menu();
+        static void open_instructions_menu();
 
         static void open_controls_menu();
 
-        static void open_instructions_menu();
+        static void open_statistics_menu();
+
+        static void open_credits_menu();
+
+        static void open_quit_menu();
     };
 } // game
 
