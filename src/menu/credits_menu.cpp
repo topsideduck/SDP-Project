@@ -3,6 +3,7 @@
 //
 
 #include "src/menu/credits_menu.h"  // Include the header for the CreditsMenu class
+
 #include "filesystem"               // For handling file paths
 #include "src/lib/FEHImages.h"      // For managing images with FEHImage class
 #include "src/menu/main_menu.h"     // For accessing the main menu
