@@ -5,8 +5,6 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-// #define STATISTICS_MENU_IMAGE_FILE_PATH "assets/menus/statistics_menu.png"
-
 
 // MAIN MENU
 
@@ -98,6 +96,7 @@
 // Define credits menu frame constants
 #define CREDITS_MENU_VIDEO_NUMBER_OF_FRAMES 224
 #define CREDITS_MENU_VIDEO_FRAME_RATE 30
+#define CREDITS_MENU_BASE_FILE_NAME "credits_"
 #define CREDITS_MENU_VIDEO_FRAMES_PATH "assets/menus/credits/"
 
 // Define credits menu back button dimensions
