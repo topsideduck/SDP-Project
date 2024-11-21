@@ -4,6 +4,7 @@
 
 #include "src/menu/main_menu.h"
 
+#include "play_game_menu.h"
 #include "statistics_menu.h"
 #include "src/lib/FEHImages.h"
 #include "src/menu/controls_menu.h"
@@ -29,6 +30,7 @@ namespace game
         LCD.Update();
 
         bool
+                open_play_game_menu_button_clicked = false,
                 open_instructions_menu_button_clicked = false,
                 open_controls_menu_button_clicked = false,
                 open_statistics_menu_button_clicked = false,
@@ -38,6 +40,16 @@ namespace game
         while (true)
         {
             auto [x_coordinate, y_coordinate] = get_input_coordinates();
+
+            if (x_coordinate >= MAIN_MENU_PLAY_GAME_BUTTON_X_COORDINATE && x_coordinate <=
+                MAIN_MENU_PLAY_GAME_BUTTON_X_COORDINATE + MAIN_MENU_PLAY_GAME_BUTTON_X_SIZE && y_coordinate >=
+                MAIN_MENU_PLAY_GAME_BUTTON_Y_COORDINATE && y_coordinate <= MAIN_MENU_PLAY_GAME_BUTTON_Y_COORDINATE
+                +
+                MAIN_MENU_PLAY_GAME_BUTTON_Y_SIZE)
+            {
+                open_play_game_menu_button_clicked = true;
+                break;
+            }
 
             if (x_coordinate >= MAIN_MENU_INSTRUCTIONS_BUTTON_X_COORDINATE && x_coordinate <=
                 MAIN_MENU_INSTRUCTIONS_BUTTON_X_COORDINATE + MAIN_MENU_INSTRUCTIONS_BUTTON_X_SIZE && y_coordinate >=
@@ -85,7 +97,13 @@ namespace game
             }
         }
 
-        if (open_instructions_menu_button_clicked)
+
+        if (open_play_game_menu_button_clicked)
+        {
+            open_play_game_menu();
+        }
+
+        else if (open_instructions_menu_button_clicked)
         {
             open_instructions_menu();
         }
@@ -111,19 +129,14 @@ namespace game
         }
     }
 
-    void MainMenu::open_quit_menu()
+    void MainMenu::open_play_game_menu()
     {
-        QuitMenu::draw_quit_menu();
+        PlayGameMenu::draw_play_game_menu();
     }
 
-    void MainMenu::open_credits_menu()
+    void MainMenu::open_instructions_menu()
     {
-        CreditsMenu::draw_credits_menu();
-    }
-
-    void MainMenu::open_statistics_menu()
-    {
-        StatisticsMenu::draw_statistics_menu();
+        InstructionsMenu::draw_instructions_menu();
     }
 
     void MainMenu::open_controls_menu()
@@ -131,8 +144,18 @@ namespace game
         ControlsMenu::draw_controls_menu();
     }
 
-    void MainMenu::open_instructions_menu()
+    void MainMenu::open_statistics_menu()
     {
-        InstructionsMenu::draw_instructions_menu();
+        StatisticsMenu::draw_statistics_menu();
+    }
+
+    void MainMenu::open_credits_menu()
+    {
+        CreditsMenu::draw_credits_menu();
+    }
+
+    void MainMenu::open_quit_menu()
+    {
+        QuitMenu::draw_quit_menu();
     }
 } // game

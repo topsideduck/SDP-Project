@@ -16,6 +16,8 @@ namespace game
 
         static void draw_main_menu();
 
+        static void open_play_game_menu();
+
         static void open_instructions_menu();
 
         static void open_controls_menu();
