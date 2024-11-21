@@ -71,6 +71,17 @@
 #define CONTROLS_MENU_BACK_BUTTON_Y_SIZE 20
 
 
+// CONTROLS MENU
+
+#define STATISTICS_MENU_IMAGE_FILE_PATH "assets/menus/statistics_menu.png"
+
+// Define controls menu back button dimensions
+#define STATISTICS_MENU_BACK_BUTTON_X_COORDINATE 110
+#define STATISTICS_MENU_BACK_BUTTON_Y_COORDINATE 196
+#define STATISTICS_MENU_BACK_BUTTON_X_SIZE 100
+#define STATISTICS_MENU_BACK_BUTTON_Y_SIZE 20
+
+
 // CREDITS MENU
 
 // Define credits menu frame constants
