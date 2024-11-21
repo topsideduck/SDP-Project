@@ -50,17 +50,22 @@ add_library(LibraryObjects OBJECT ${LIBRARY_SRCS})
 add_library(StudentObjects OBJECT ${STUDENT_SRCS}
         src/menu/main_menu.cpp
         src/menu/main_menu.h
+
+        src/menu/instructions_menu.cpp
+        src/menu/instructions_menu.h
+
+        src/menu/controls_menu.cpp
+        src/menu/controls_menu.h
+
+        src/menu/credits_menu.cpp
+        src/menu/credits_menu.h
+
         src/menu/quit_menu.cpp
         src/menu/quit_menu.h
+        
         src/util/input.cpp
         src/util/input.h
         src/util/constants.h
-        src/menu/credits_menu.cpp
-        src/menu/credits_menu.h
-        src/menu/controls_menu.cpp
-        src/menu/controls_menu.h
-        src/menu/instructions_menu.cpp
-        src/menu/instructions_menu.h
 )
 
 # Link the final executable
