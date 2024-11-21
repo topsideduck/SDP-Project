@@ -14,7 +14,7 @@ include_directories(.)
 # Platform-specific linker flags
 if (WIN32)
     set(LDFLAGS "-lopengl32 -lgdi32")
-    set(EXECUTABLE game.exe)
+    set(EXECUTABLE game)
 elseif (APPLE)
     set(LDFLAGS "-framework OpenGL -framework Cocoa")
     set(EXECUTABLE game)
