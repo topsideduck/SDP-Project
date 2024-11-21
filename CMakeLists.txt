@@ -66,6 +66,8 @@ add_library(StudentObjects OBJECT ${STUDENT_SRCS}
         src/util/input.cpp
         src/util/input.h
         src/util/constants.h
+        src/menu/statistics_menu.cpp
+        src/menu/statistics_menu.h
 )
 
 # Link the final executable
