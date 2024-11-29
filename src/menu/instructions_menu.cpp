@@ -5,7 +5,7 @@
 #include "src/menu/instructions_menu.h" // Include the header for the InstructionsMenu class
 
 #include "src/lib/FEHImages.h"         // For managing images with FEHImage class
-#include "src/menu/main_menu.h"        // For accessing the main menu functionality
+#include "src/menu/menus.h"            // Include the Menus enum
 #include "src/util/constants.h"        // For predefined constants such as file paths and button coordinates
 #include "src/util/input.h"            // For handling touchscreen input
 
@@ -38,10 +38,10 @@ namespace game
 
         // Update the LCD display to show the loaded image
         LCD.Update();
+    }
 
-        // Flag to indicate if the "Back to Main Menu" button is clicked
-        bool back_to_main_menu_clicked = false;
-
+    Menus InstructionsMenu::handle_instructions_menu_input()
+    {
         // Continuously check for user input
         while (true)
         {
@@ -54,25 +54,8 @@ namespace game
                 y_coordinate >= INSTRUCTIONS_MENU_BACK_BUTTON_Y_COORDINATE &&
                 y_coordinate <= INSTRUCTIONS_MENU_BACK_BUTTON_Y_COORDINATE + INSTRUCTIONS_MENU_BACK_BUTTON_Y_SIZE)
             {
-                back_to_main_menu_clicked = true;
-                break; // Exit the loop if the "Back" button is clicked
+                return Menus::MainMenu;
             }
         }
-
-        // Navigate to the main menu if the "Back" button was clicked
-        if (back_to_main_menu_clicked)
-        {
-            open_main_menu();
-        }
-    }
-
-    /**
-     * @brief Opens the main menu by calling its draw method.
-     *
-     * This method transitions the screen to the main menu interface.
-     */
-    void InstructionsMenu::open_main_menu()
-    {
-        MainMenu::draw_main_menu();
     }
 } // namespace game
