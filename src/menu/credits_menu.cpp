@@ -4,9 +4,8 @@
 
 #include "src/menu/credits_menu.h"  // Include the header for the CreditsMenu class
 
-#include "filesystem"               // For handling file paths
-#include "src/lib/FEHImages.h"      // For managing images with FEHImage class
-#include "src/menu/main_menu.h"     // For accessing the main menu
+#include "src/lib/FEHLCD.h"         // For clearing and updating the screen
+#include "src/menu/menus.h"         // Include the Menus enum
 #include "src/util/constants.h"     // For predefined constants like paths and button coordinates
 #include "src/util/input.h"         // For handling touchscreen input
 #include "src/util/play_video.h"    // For video playback functionality
@@ -35,11 +34,17 @@ namespace game
         // Clear the LCD screen
         LCD.Clear();
 
-        bool back_clicked = false;
-
         // Play the credits video using frames from a specified folder
         play_video(CREDITS_MENU_VIDEO_FRAMES_PATH, CREDITS_MENU_VIDEO_NUMBER_OF_FRAMES, CREDITS_MENU_BASE_FILE_NAME);
+    }
 
+    /**
+     * @brief Opens the main menu by calling its draw method.
+     *
+     * This method transitions the screen to the main menu interface.
+     */
+    Menus CreditsMenu::handle_credits_menu_input()
+    {
         // Continuously wait for user interaction
         while (true)
         {
@@ -52,25 +57,8 @@ namespace game
                 y_coordinate >= CREDITS_MENU_BACK_BUTTON_Y_COORDINATE &&
                 y_coordinate <= CREDITS_MENU_BACK_BUTTON_Y_COORDINATE + CREDITS_MENU_BACK_BUTTON_Y_SIZE)
             {
-                back_clicked = true;
-                break; // Exit the loop
+                return Menus::MainMenu;
             }
         }
-
-        // Navigate to the main menu if the "Back" button was clicked
-        if (back_clicked)
-        {
-            open_main_menu();
-        }
-    }
-
-    /**
-     * @brief Opens the main menu by calling its draw method.
-     *
-     * This method transitions the screen to the main menu interface.
-     */
-    void CreditsMenu::open_main_menu()
-    {
-        MainMenu::draw_main_menu();
     }
 } // game

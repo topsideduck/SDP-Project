@@ -4,6 +4,7 @@
 
 #ifndef CREDITS_MENU_H
 #define CREDITS_MENU_H
+#include "menus.h"
 
 namespace game
 {
@@ -35,13 +36,7 @@ namespace game
          */
         static void draw_credits_menu();
 
-        /**
-         * @brief Navigates to the main menu.
-         *
-         * This static method transitions the screen to the main menu by calling
-         * the main menu's draw method.
-         */
-        static void open_main_menu();
+        static Menus handle_credits_menu_input();
     };
 } // game
 
