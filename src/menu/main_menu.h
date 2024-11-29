@@ -5,6 +5,8 @@
 #ifndef MAIN_MENU_H
 #define MAIN_MENU_H
 
+#include "src/menu/menus.h" // Include the Menus enum
+
 namespace game
 {
     /**
@@ -36,35 +38,7 @@ namespace game
          */
         static void draw_main_menu();
 
-        /**
-         * @brief Navigates to the Play Game menu.
-         */
-        static void open_play_game_menu();
-
-        /**
-         * @brief Navigates to the Instructions menu.
-         */
-        static void open_instructions_menu();
-
-        /**
-         * @brief Navigates to the Controls menu.
-         */
-        static void open_controls_menu();
-
-        /**
-         * @brief Navigates to the Statistics menu.
-         */
-        static void open_statistics_menu();
-
-        /**
-         * @brief Navigates to the Credits menu.
-         */
-        static void open_credits_menu();
-
-        /**
-         * @brief Navigates to the Quit menu.
-         */
-        static void open_quit_menu();
+        static Menus handle_main_menu_input();
     };
 } // namespace game
 
