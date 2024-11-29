@@ -54,7 +54,7 @@ set(LIBRARY_SRCS
 add_library(LibraryObjects OBJECT ${LIBRARY_SRCS})
 
 # Compile the student files
-add_library(StudentObjects OBJECT ${STUDENT_SRCS}
+add_library(StudentObjects OBJECT
         # Main
         src/main.cpp
 
