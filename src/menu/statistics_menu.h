@@ -4,6 +4,7 @@
 
 #ifndef STATISTICS_MENU_H
 #define STATISTICS_MENU_H
+#include "menus.h"
 
 namespace game
 {
@@ -35,13 +36,7 @@ namespace game
          */
         static void draw_statistics_menu();
 
-        /**
-         * @brief Transitions to the main menu screen.
-         *
-         * This static method is called when the user clicks the "Back" button
-         * in the statistics menu.
-         */
-        static void open_main_menu();
+        static Menus handle_statistics_menu_input();
     };
 } // namespace game
 
