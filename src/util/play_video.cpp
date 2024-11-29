@@ -4,8 +4,9 @@
 
 #include "src/util/play_video.h" // Include custom header file for video playback functionality
 
-#include <src/lib/FEHImages.h>  // For handling image files with FEHImage class
-#include <src/lib/FEHLCD.h>     // For managing LCD display operations
+#include <filesystem>           // For handling file paths
+#include "src/lib/FEHImages.h"  // For handling image files with FEHImage class
+#include "src/lib/FEHLCD.h"     // For managing LCD display operations
 
 /**
  * @brief Plays a video by displaying a sequence of image frames stored in a specified folder.
