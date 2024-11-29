@@ -4,6 +4,7 @@
 
 #ifndef PLAY_GAME_MENU_H
 #define PLAY_GAME_MENU_H
+#include "menus.h"
 
 namespace game
 {
@@ -35,13 +36,7 @@ namespace game
          */
         static void draw_play_game_menu();
 
-        /**
-         * @brief Transitions to the main menu screen.
-         *
-         * This static method is called when the user clicks the "Back" button
-         * in the play game menu.
-         */
-        static void open_main_menu();
+        static Menus handle_play_game_menu_input();
     };
 } // namespace game
 
