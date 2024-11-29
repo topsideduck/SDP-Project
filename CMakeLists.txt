@@ -27,28 +27,40 @@ endif ()
 
 # Library sources
 set(LIBRARY_SRCS
-        src/lib/FEHLCD.cpp
-        src/lib/FEHRandom.cpp
-        src/lib/FEHSD.cpp
-        src/lib/tigr.c
-        src/lib/FEHUtility.cpp
+        src/lib/FEHFile.h
+
         src/lib/FEHImages.cpp
-)
+        src/lib/FEHImages.h
 
-# Get all student source files recursively from the parent directory
-file(GLOB_RECURSE STUDENT_SRCS
-        "src/*.cpp"
-)
+        src/lib/FEHLCD.cpp
+        src/lib/FEHLCD.h
 
-# Exclude simulator library files
-list(FILTER STUDENT_SRCS EXCLUDE REGEX "src/lib/.*")
+        src/lib/FEHRandom.cpp
+        src/lib/FEHRandom.h
+
+        src/lib/FEHSD.cpp
+        src/lib/FEHSD.h
+
+        src/lib/FEHUtility.cpp
+        src/lib/FEHUtility.h
+
+        src/lib/LCDColors.h
+
+        src/lib/tigr.c
+        src/lib/tigr.h
+)
 
 # Compile the library object files
 add_library(LibraryObjects OBJECT ${LIBRARY_SRCS})
 
 # Compile the student files
 add_library(StudentObjects OBJECT ${STUDENT_SRCS}
+        # Main
+        src/main.cpp
+
         # Menu
+        src/menu/menus.h
+
         src/menu/main_menu.cpp
         src/menu/main_menu.h
 
@@ -78,6 +90,8 @@ add_library(StudentObjects OBJECT ${STUDENT_SRCS}
 
         src/util/play_video.cpp
         src/util/play_video.h
+
+        # Main Gameplay
 )
 
 # Link the final executable
