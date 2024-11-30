@@ -92,9 +92,11 @@ add_library(StudentObjects OBJECT
         src/util/play_video.h
 
         # Main Gameplay
+        src/gameplay/arrow.cpp
+        src/gameplay/arrow.h
 
-        src/gameplay/tile_generator.cpp
-        src/gameplay/tile_generator.h
+        src/gameplay/arrow_manager.cpp
+        src/gameplay/arrow_manager.h
         
         src/gameplay/display_score.cpp
         src/gameplay/display_score.h
