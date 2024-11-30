@@ -92,6 +92,12 @@ add_library(StudentObjects OBJECT
         src/util/play_video.h
 
         # Main Gameplay
+
+        src/gameplay/tile_generator.cpp
+        src/gameplay/tile_generator.h
+        
+        src/gameplay/display_score.cpp
+        src/gameplay/display_score.h
 )
 
 # Link the final executable
