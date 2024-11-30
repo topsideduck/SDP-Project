@@ -16,7 +16,7 @@ namespace game
 
         ~DisplayScore();
 
-        static void draw_score_on_screen(int score);
+        static void draw_score_on_screen(unsigned int score);
     };
 } // game
 

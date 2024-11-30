@@ -17,9 +17,9 @@ namespace game
 
     DisplayScore::~DisplayScore() = default;
 
-    void DisplayScore::draw_score_on_screen(int score)
+    void DisplayScore::draw_score_on_screen(unsigned int score)
     {
-        std::vector<int> numbers;
+        std::vector<unsigned int> numbers;
 
         while (score > 0)
         {
@@ -31,7 +31,7 @@ namespace game
 
         int current_draw_x_coordinate = GAMEPLAY_SCORE_X_COORDINATE;
 
-        for (const int i : numbers)
+        for (const unsigned int i : numbers)
         {
             std::filesystem::path number_file = FONT_NUMBER_BASE_FILE_NAME + std::to_string(i) + ".png";
             std::filesystem::path result = FONT_NUMBER_FILE_PATH / number_file;
