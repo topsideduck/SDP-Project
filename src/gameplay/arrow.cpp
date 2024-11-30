@@ -8,7 +8,6 @@
 #include "src/util/constants.h"
 
 
-
 namespace game
 {
     Arrow::Arrow(const ArrowDirection direction)
@@ -66,5 +65,30 @@ namespace game
         arrow_image.Draw(x_coordinate, y_coordinate);
     }
 
+    bool Arrow::is_out_of_bounds()
+    {
+        switch (arrow_direction)
+        {
+            case ArrowDirection::Left:
+            {
+                return x_coordinate == LEFT_ARROW_END_X_COORDINATE && y_coordinate <= LEFT_ARROW_END_Y_COORDINATE;
+            }
 
+            case ArrowDirection::Up:
+            {
+                return x_coordinate == UP_ARROW_END_X_COORDINATE && y_coordinate <= UP_ARROW_END_Y_COORDINATE;
+            }
+
+            case ArrowDirection::Down:
+            {
+                return x_coordinate == DOWN_ARROW_END_X_COORDINATE && y_coordinate <= DOWN_ARROW_END_Y_COORDINATE;
+            }
+
+            case ArrowDirection::Right:
+            {
+                return x_coordinate == RIGHT_ARROW_END_X_COORDINATE && y_coordinate <= RIGHT_ARROW_END_Y_COORDINATE;
+            }
+        }
+        return false;
+    }
 } // game

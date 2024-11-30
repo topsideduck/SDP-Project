@@ -36,6 +36,8 @@ namespace game
         void update_arrow_position(int delta_x, int delta_y);
 
         void draw_arrow();
+
+        bool is_out_of_bounds();
     };
 } // game
 
