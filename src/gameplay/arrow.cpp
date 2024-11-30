@@ -61,7 +61,7 @@ namespace game
         arrow_image.Close();
     }
 
-    void Arrow::update_arrow_position(const int delta_x, const int delta_y)
+    void Arrow::update_arrow_position(const float delta_x, const float delta_y)
     {
         x_coordinate += delta_x;
         y_coordinate += delta_y;

@@ -23,7 +23,7 @@ namespace game
     class Arrow
     {
     private:
-        int x_coordinate, y_coordinate;
+        float x_coordinate, y_coordinate;
         ArrowDirection arrow_direction;
 
         std::string arrow_image_file_path;
@@ -36,7 +36,7 @@ namespace game
 
         ~Arrow();
 
-        void update_arrow_position(int delta_x, int delta_y);
+        void update_arrow_position(float delta_x, float delta_y);
 
         void draw_arrow();
 
