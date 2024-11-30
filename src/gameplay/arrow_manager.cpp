@@ -20,6 +20,12 @@ namespace game
         arrows.push_back(new Arrow(direction));
     }
 
+    unsigned int ArrowManager::create_random_generation_delay()
+    {
+        return random_time_delay_between_generation_distribution(random_number_generator);
+    }
+
+
     void ArrowManager::move_all_arrows(const float delta_x, const float delta_y) const
     {
         for (const auto arrow: arrows)
