@@ -5,6 +5,8 @@
 #ifndef ARROW_MANAGER_H
 #define ARROW_MANAGER_H
 
+#include <src/util/constants.h>
+
 #include "src/gameplay/arrow.h"
 
 #include "random"
@@ -22,7 +24,7 @@ namespace game
         std::mt19937 random_number_generator{random_device()};
         std::uniform_int_distribution<std::mt19937::result_type> random_arrow_generator_distribution{0, 3};
         std::uniform_int_distribution<std::mt19937::result_type> random_time_delay_between_generation_distribution{
-            0, 50
+            RANDOM_TIME_DELAY_GENERATOR_START_BOUND, RANDOM_TIME_DELAY_GENERATOR_END_BOUND
         };
 
     public:
@@ -39,6 +41,8 @@ namespace game
         void delete_invalid_arrows();
 
         void draw_all_arrows() const;
+
+        unsigned int gather_scores(ArrowDirection direction) const;
     };
 } // game
 

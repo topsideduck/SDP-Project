@@ -16,7 +16,8 @@ namespace game
 
     void ArrowManager::create_random_arrow()
     {
-        const auto direction = static_cast<ArrowDirection>(random_arrow_generator_distribution(random_number_generator));
+        const auto direction = static_cast<ArrowDirection>(
+            random_arrow_generator_distribution(random_number_generator));
         arrows.push_back(new Arrow(direction));
     }
 
@@ -24,7 +25,6 @@ namespace game
     {
         return random_time_delay_between_generation_distribution(random_number_generator);
     }
-
 
     void ArrowManager::move_all_arrows(const float delta_x, const float delta_y) const
     {
@@ -60,5 +60,20 @@ namespace game
         {
             arrow->draw_arrow();
         }
+    }
+
+    unsigned int ArrowManager::gather_scores(const ArrowDirection direction) const
+    {
+        unsigned int scores = 0;
+
+        for (const auto arrow: arrows)
+        {
+            if (arrow->get_direction() == direction)
+            {
+                scores += arrow->calculate_points_received_for_hit();
+            }
+        }
+
+        return scores;
     }
 } // game
