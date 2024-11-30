@@ -36,8 +36,6 @@ namespace game
             std::filesystem::path number_file = FONT_NUMBER_BASE_FILE_NAME + std::to_string(i) + ".png";
             std::filesystem::path result = FONT_NUMBER_FILE_PATH / number_file;
 
-            std::cout << result.string() << std::endl;
-
             FEHImage number{result.string().c_str()};
             number.Draw(current_draw_x_coordinate, GAMEPLAY_SCORE_Y_COORDINATE);
 
