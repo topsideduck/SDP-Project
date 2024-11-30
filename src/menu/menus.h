@@ -5,7 +5,8 @@
 #ifndef MENUS_H
 #define MENUS_H
 
-enum Menus{
+enum Menus
+{
     ControlsMenu,
     CreditsMenu,
     InstructionsMenu,
