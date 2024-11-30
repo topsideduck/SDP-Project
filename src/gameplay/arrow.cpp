@@ -106,7 +106,7 @@ namespace game
             return 0;
         }
 
-        int end_y_coordinate;
+        float end_y_coordinate;
 
         switch (arrow_direction)
         {
@@ -142,7 +142,6 @@ namespace game
         const int distance = abs(y_coordinate - end_y_coordinate);
         int points_received;
 
-
         if (distance < 30 && distance >= 20)
         {
             is_hit = true;
@@ -170,4 +169,10 @@ namespace game
     {
         return is_hit;
     }
+
+    ArrowDirection Arrow::get_direction() const
+    {
+        return arrow_direction;
+    }
+
 } // game

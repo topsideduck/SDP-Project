@@ -42,9 +42,11 @@ namespace game
 
         bool is_out_of_bounds() const;
 
+        bool is_points_received() const;
+
         int calculate_points_received_for_hit();
 
-        bool is_points_received() const;
+        ArrowDirection get_direction() const;
     };
 } // game
 
