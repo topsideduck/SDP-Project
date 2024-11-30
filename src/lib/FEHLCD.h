@@ -8,6 +8,7 @@
 #include <string>
 #include "tigr.h"
 #include "LCDColors.h"
+#include "src/gameplay/main_game.h"
 
 
 #define LCD_WIDTH 320
@@ -20,10 +21,10 @@ class FEHLCD
     // Make the FEHImage class a friend so it can access the Tigr *screen
     // Do not let the user access the Tigr *screen directly
     friend class FEHImage;
-    friend class Game;
+    friend class MainGame;
     // friend class FEHKeyboard;
-protected:
-    // public:
+    // protected:
+public:
     Tigr *screen;
 
 public:
