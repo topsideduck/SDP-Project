@@ -47,4 +47,12 @@ namespace game
 
         arrows.erase(it, arrows.end());
     }
+
+    void ArrowManager::draw_all_arrows() const
+    {
+        for (const auto arrow: arrows)
+        {
+            arrow->draw_arrow();
+        }
+    }
 } // game
