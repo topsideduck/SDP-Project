@@ -98,4 +98,76 @@ namespace game
         }
         return false;
     }
+
+    int Arrow::calculate_points_received_for_hit()
+    {
+        if (is_hit)
+        {
+            return 0;
+        }
+
+        int end_y_coordinate;
+
+        switch (arrow_direction)
+        {
+            case ArrowDirection::Left:
+            {
+                end_y_coordinate = LEFT_ARROW_END_Y_COORDINATE;
+                break;
+            }
+
+            case ArrowDirection::Up:
+            {
+                end_y_coordinate = UP_ARROW_END_Y_COORDINATE;
+                break;
+            }
+
+            case ArrowDirection::Down:
+            {
+                end_y_coordinate = DOWN_ARROW_END_Y_COORDINATE;
+                break;
+            }
+
+            case ArrowDirection::Right:
+            {
+                end_y_coordinate = RIGHT_ARROW_END_Y_COORDINATE;
+                break;
+            }
+            default:
+            {
+                end_y_coordinate = 0;
+            }
+        }
+
+        const int distance = abs(y_coordinate - end_y_coordinate);
+        int points_received;
+
+
+        if (distance < 30 && distance >= 20)
+        {
+            is_hit = true;
+            points_received = 1;
+        }
+        else if (distance < 20 && distance >= 10)
+        {
+            is_hit = true;
+            points_received = 2;
+        }
+        else if (distance < 10 && distance >= 0)
+        {
+            is_hit = true;
+            points_received = 3;
+        }
+        else
+        {
+            points_received = 0;
+        }
+
+        return points_received;
+    }
+
+    bool Arrow::is_points_received() const
+    {
+        return is_hit;
+    }
 } // game

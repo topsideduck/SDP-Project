@@ -29,6 +29,8 @@ namespace game
         std::string arrow_image_file_path;
         FEHImage arrow_image;
 
+        bool is_hit = false;
+
     public:
         explicit Arrow(ArrowDirection direction);
 
@@ -39,6 +41,10 @@ namespace game
         void draw_arrow();
 
         bool is_out_of_bounds() const;
+
+        int calculate_points_received_for_hit();
+
+        bool is_points_received() const;
     };
 } // game
 
