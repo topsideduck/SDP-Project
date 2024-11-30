@@ -137,8 +137,8 @@
 
 
 // ARROWS
-#define ARROWS_X_SIZE 24
-#define ARROWS_Y_SIZE 20
+#define ARROWS_X_SIZE 30
+#define ARROWS_Y_SIZE 30
 
 #define LEFT_ARROW_IMAGE_FILE_PATH "assets/arrows/left_arrow.png"
 #define LEFT_ARROW_START_X_COORDINATE 5
