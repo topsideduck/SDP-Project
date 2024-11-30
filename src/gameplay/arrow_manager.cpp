@@ -27,4 +27,24 @@ namespace game
             arrow->update_arrow_position(delta_x, delta_y);
         }
     }
+
+    void ArrowManager::delete_arrows()
+    {
+        const auto it = std::ranges::remove_if(arrows, [](const Arrow *arrow)
+        {
+            if (arrow->is_out_of_bounds())
+            {
+                delete arrow;
+                return true;
+            }
+            if (arrow->is_points_received())
+            {
+                delete arrow;
+                return true;
+            }
+            return false;
+        }).begin();
+
+        arrows.erase(it, arrows.end());
+    }
 } // game
