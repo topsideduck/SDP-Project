@@ -24,8 +24,9 @@ namespace game
     {
     private:
         int x_coordinate, y_coordinate;
-        std::string arrow_image_file_path;
         ArrowDirection arrow_direction;
+
+        std::string arrow_image_file_path;
         FEHImage arrow_image;
 
     public:
@@ -37,7 +38,7 @@ namespace game
 
         void draw_arrow();
 
-        bool is_out_of_bounds();
+        bool is_out_of_bounds() const;
     };
 } // game
 

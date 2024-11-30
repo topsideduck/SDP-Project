@@ -16,11 +16,21 @@ namespace game
 
         switch (direction)
         {
+            case ArrowDirection::Left:
+            {
+                x_coordinate = LEFT_ARROW_START_X_COORDINATE;
+                y_coordinate = LEFT_ARROW_START_Y_COORDINATE;
+                arrow_image_file_path = LEFT_ARROW_IMAGE_FILE_PATH;
+
+                break;
+            }
+
             case ArrowDirection::Up:
             {
                 x_coordinate = UP_ARROW_START_X_COORDINATE;
                 y_coordinate = UP_ARROW_START_Y_COORDINATE;
                 arrow_image_file_path = UP_ARROW_IMAGE_FILE_PATH;
+
                 break;
             }
 
@@ -28,13 +38,8 @@ namespace game
             {
                 x_coordinate = DOWN_ARROW_START_X_COORDINATE;
                 y_coordinate = DOWN_ARROW_START_Y_COORDINATE;
-                break;
-            }
+                arrow_image_file_path = DOWN_ARROW_IMAGE_FILE_PATH;
 
-            case ArrowDirection::Left:
-            {
-                x_coordinate = LEFT_ARROW_START_X_COORDINATE;
-                y_coordinate = LEFT_ARROW_START_Y_COORDINATE;
                 break;
             }
 
@@ -42,6 +47,8 @@ namespace game
             {
                 x_coordinate = RIGHT_ARROW_START_X_COORDINATE;
                 y_coordinate = RIGHT_ARROW_START_Y_COORDINATE;
+                arrow_image_file_path = RIGHT_ARROW_IMAGE_FILE_PATH;
+
                 break;
             }
         }
@@ -65,7 +72,7 @@ namespace game
         arrow_image.Draw(x_coordinate, y_coordinate);
     }
 
-    bool Arrow::is_out_of_bounds()
+    bool Arrow::is_out_of_bounds() const
     {
         switch (arrow_direction)
         {
