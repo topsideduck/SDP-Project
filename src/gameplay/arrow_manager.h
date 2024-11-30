@@ -20,7 +20,7 @@ namespace game
 
         std::random_device random_device;
         std::mt19937 random_number_generator{random_device()};
-        std::uniform_int_distribution<std::mt19937::result_type> distribution_4{1, 4};
+        std::uniform_int_distribution<std::mt19937::result_type> distribution_4{0, 3};
 
     public:
         ArrowManager();
