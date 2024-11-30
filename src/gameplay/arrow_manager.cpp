@@ -20,6 +20,11 @@ namespace game
         arrows.push_back(new Arrow(direction));
     }
 
-
-
+    void ArrowManager::move_arrows(const int delta_x, const int delta_y) const
+    {
+        for (const auto arrow: arrows)
+        {
+            arrow->update_arrow_position(delta_x, delta_y);
+        }
+    }
 } // game
