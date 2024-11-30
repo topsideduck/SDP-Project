@@ -14,4 +14,12 @@ namespace game
 
     ArrowManager::~ArrowManager() = default;
 
+    void ArrowManager::create_random_arrow()
+    {
+        const auto direction = static_cast<ArrowDirection>(distribution_4(random_number_generator));
+        arrows.push_back(new Arrow(direction));
+    }
+
+
+
 } // game
