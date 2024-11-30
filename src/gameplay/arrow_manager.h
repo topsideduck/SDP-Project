@@ -20,7 +20,7 @@ namespace game
 
         std::random_device random_device;
         std::mt19937 random_number_generator{random_device()};
-        std::uniform_int_distribution<std::mt19937::result_type> distribution_4{0, 3};
+        std::uniform_int_distribution<std::mt19937::result_type> random_arrow_generator_distribution{0, 3};
 
     public:
         ArrowManager();
@@ -29,9 +29,9 @@ namespace game
 
         void create_random_arrow();
 
-        void move_arrows(int delta_x, int delta_y) const;
+        void move_all_arrows(float delta_x, float delta_y) const;
 
-        void delete_arrows();
+        void delete_invalid_arrows();
 
         void draw_all_arrows() const;
     };

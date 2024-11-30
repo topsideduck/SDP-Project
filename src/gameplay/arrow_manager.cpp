@@ -16,11 +16,11 @@ namespace game
 
     void ArrowManager::create_random_arrow()
     {
-        const auto direction = static_cast<ArrowDirection>(distribution_4(random_number_generator));
+        const auto direction = static_cast<ArrowDirection>(random_arrow_generator_distribution(random_number_generator));
         arrows.push_back(new Arrow(direction));
     }
 
-    void ArrowManager::move_arrows(const int delta_x, const int delta_y) const
+    void ArrowManager::move_all_arrows(const float delta_x, const float delta_y) const
     {
         for (const auto arrow: arrows)
         {
@@ -28,7 +28,7 @@ namespace game
         }
     }
 
-    void ArrowManager::delete_arrows()
+    void ArrowManager::delete_invalid_arrows()
     {
         const auto it = std::ranges::remove_if(arrows, [](const Arrow *arrow)
         {
