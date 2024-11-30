@@ -39,9 +39,9 @@ namespace game
             FEHImage number{result.string().c_str()};
             number.Draw(current_draw_x_coordinate, GAMEPLAY_SCORE_Y_COORDINATE);
 
-            LCD.Update();
-
             current_draw_x_coordinate += FONT_NUMBER_X_SIZE;
         }
+
+        LCD.Update();
     }
 } // game
