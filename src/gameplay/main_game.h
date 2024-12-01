@@ -16,7 +16,7 @@ namespace game
 
         ~MainGame();
 
-        static void main_loop();
+        static void main_loop(const std::string& music_audio_file_path, const std::string& music_info_file_path);
     };
 } // game
 

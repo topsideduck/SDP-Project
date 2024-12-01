@@ -7,6 +7,7 @@
 #include "src/gameplay/arrow_manager.h"
 #include "src/gameplay/display_score.h"
 #include "src/lib/FEHImages.h"
+#include "src/util/audio_manager.h"
 #include "src/util/constants.h"
 #include "src/util/play_dance.h"
 
@@ -17,7 +18,7 @@ namespace game
 
     MainGame::~MainGame() = default;
 
-    void MainGame::main_loop()
+    void MainGame::main_loop(const std::string &music_audio_file_path, const std::string &music_info_file_path)
     {
         unsigned int score = 1;
 
@@ -34,12 +35,17 @@ namespace game
         ArrowManager arrow_manager;
 
         FEHImage background_image{MAIN_GAME_IMAGE_FILE_PATH};
+        FEHImage info_image{music_info_file_path.c_str()};
 
-        while (true)
+        AudioManager game_audio_manager(music_audio_file_path);
+        game_audio_manager.play();
+
+        while (!game_audio_manager.is_playback_complete())
         {
             LCD.Clear();
 
             background_image.Draw(0, 0);
+            info_image.Draw(235, 0);
 
             ArrowDirection direction_to_check{};
 
@@ -64,14 +70,15 @@ namespace game
                 direction_to_check = ArrowDirection::Standing;
             }
 
-            score += arrow_manager.gather_scores(direction_to_check);
+            score += arrow_manager.gather_scores(direction_to_check);;
 
             if (old_direction != direction_to_check)
             {
                 dance_counter = 1;
             }
 
-            play_dance(direction_to_check, &dance_counter, MAIN_GAME_DANCE_FRAME_X_COORDINATE, MAIN_GAME_DANCE_FRAME_Y_COORDINATE, DANCE_ITERATIONS_BETWEEN_FRAMES);
+            play_dance(direction_to_check, &dance_counter, MAIN_GAME_DANCE_FRAME_X_COORDINATE,
+                       MAIN_GAME_DANCE_FRAME_Y_COORDINATE, DANCE_ITERATIONS_BETWEEN_FRAMES);
 
             DisplayScore::draw_score_on_screen(score);
 
@@ -99,5 +106,7 @@ namespace game
 
             LCD.Update();
         }
+
+        game_audio_manager.stop();
     }
 } // game
