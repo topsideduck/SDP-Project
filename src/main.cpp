@@ -1,9 +1,10 @@
+#include "gameplay/main_game.h"
+#include "menu/music_picker_menu.h"
 #include "src/menu/controls_menu.h"
 #include "src/menu/credits_menu.h"
 #include "src/menu/instructions_menu.h"
 #include "src/menu/main_menu.h"
 #include "src/menu/menus.h"
-#include "src/menu/play_game_menu.h"
 #include "src/menu/quit_menu.h"
 #include "src/menu/statistics_menu.h"
 #include "src/util/audio_manager.h"
@@ -14,7 +15,11 @@
 {
     Menus current_menu = Menus::MainMenu;
 
-    game::AudioManager menu_audio_manager(MENU_BG_MUSIC_FILE_PATH);
+    game::AudioManager menu_audio_manager(MUSIC_MENU_BG_FILE_PATH);
+
+    std::string music_audio_file_path;
+    std::string music_info_file_path;
+
 
     while (true)
     {
@@ -68,11 +73,22 @@
                 break;
             }
 
+            case Menus::MusicPickerMenu:
+            {
+                game::MusicPickerMenu::draw_music_picker_menu();
+                auto [menu, audio_file_path, info_file_path] =
+                        game::MusicPickerMenu::handle_music_picker_menu_input();
+
+                current_menu = menu;
+                music_audio_file_path = audio_file_path;
+                music_info_file_path = info_file_path;
+
+                break;
+            }
+
             case Menus::PlayGameMenu:
             {
-                game::PlayGameMenu::draw_play_game_menu();
-                current_menu = game::PlayGameMenu::handle_play_game_menu_input();
-                break;
+                game::MainGame::main_loop(music_audio_file_path, music_info_file_path);
             }
 
             case Menus::QuitMenu:
