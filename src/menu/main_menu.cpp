@@ -76,7 +76,7 @@ namespace game
             {
                 should_i_dance = false;
                 dance_thread.join();
-                return Menus::PlayGameMenu;
+                return Menus::MusicPickerMenu;
             }
 
             // Check if the user clicked the Instructions button
