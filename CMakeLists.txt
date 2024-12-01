@@ -56,9 +56,12 @@ add_library(LibraryObjects OBJECT ${LIBRARY_SRCS})
 # Compile the student files
 add_library(StudentObjects OBJECT
         # Main
+
         src/main.cpp
 
+
         # Menu
+
         src/menu/menus.h
 
         src/menu/main_menu.cpp
@@ -82,24 +85,33 @@ add_library(StudentObjects OBJECT
         src/menu/quit_menu.cpp
         src/menu/quit_menu.h
 
-        # Utilities
-        src/util/constants.h
-
-        src/util/input.cpp
-        src/util/input.h
-
-        src/util/play_video.cpp
-        src/util/play_video.h
 
         # Main Gameplay
+
         src/gameplay/arrow.cpp
         src/gameplay/arrow.h
 
         src/gameplay/arrow_manager.cpp
         src/gameplay/arrow_manager.h
-        
+
         src/gameplay/display_score.cpp
         src/gameplay/display_score.h
+        src/gameplay/main_game.cpp
+        src/gameplay/main_game.h
+
+
+        # Utilities
+
+        src/util/constants.h
+
+        src/util/input.cpp
+        src/util/input.h
+
+        src/util/play_dance.cpp
+        src/util/play_dance.h
+
+        src/util/play_video.cpp
+        src/util/play_video.h
 )
 
 # Link the final executable
