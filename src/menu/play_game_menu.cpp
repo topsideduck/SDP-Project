@@ -8,6 +8,8 @@
 #include "src/menu/menus.h"          // Include the Menus enum
 #include "src/util/constants.h"      // For constants like file paths and button coordinates
 #include "src/util/input.h"          // For getting touch input from the user
+#include "src/gameplay/main_game.h"
+
 
 namespace game
 {
@@ -29,15 +31,17 @@ namespace game
      */
     void PlayGameMenu::draw_play_game_menu()
     {
-        // Clear the LCD screen
-        LCD.Clear();
+        // // Clear the LCD screen
+        // LCD.Clear();
+        //
+        // // Load and draw the play game menu image
+        // FEHImage play_game_menu_image{PLAY_GAME_MENU_IMAGE_FILE_PATH};
+        // play_game_menu_image.Draw(0, 0);
+        //
+        // // Update the LCD display to show the menu image
+        // LCD.Update();
 
-        // Load and draw the play game menu image
-        FEHImage play_game_menu_image{PLAY_GAME_MENU_IMAGE_FILE_PATH};
-        play_game_menu_image.Draw(0, 0);
-
-        // Update the LCD display to show the menu image
-        LCD.Update();
+        MainGame::main_loop();
     }
 
     Menus PlayGameMenu::handle_play_game_menu_input()
