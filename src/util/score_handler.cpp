@@ -11,37 +11,57 @@
 
 namespace game
 {
-    ScoreHandler::ScoreHandler(const std::string& filename) : filename(filename) {}
+    ScoreHandler::ScoreHandler(const std::string &filename) : filename(filename)
+    {
+        if (std::ifstream in_file(filename, std::ios::binary); !in_file)
+        {
+            // File does not exist, create and initialize it
+            if (std::ofstream out_file(filename, std::ios::binary); out_file)
+            {
+                int default_scores[3] = {0, 0, 0};
+                out_file.write(reinterpret_cast<const char *>(default_scores), sizeof(default_scores));
+                out_file.close();
+            }
+            else
+            {
+                std::cerr << "Error creating file." << std::endl;
+            }
+        }
+        else
+        {
+            std::cout << "File already exists." << std::endl;
+        }
+    }
 
     ScoreHandler::~ScoreHandler() = default;
 
     void ScoreHandler::save_score(const unsigned int score) const
     {
-        std::ofstream outFile(filename, std::ios::binary | std::ios::app);
-        if (!outFile)
+        std::ofstream out_file(filename, std::ios::binary | std::ios::app);
+        if (!out_file)
         {
             std::cerr << "Error opening file for writing." << std::endl;
             return;
         }
-        outFile.write(reinterpret_cast<const char *>(&score), sizeof(score));
-        outFile.close();
+        out_file.write(reinterpret_cast<const char *>(&score), sizeof(score));
+        out_file.close();
     }
 
     std::vector<unsigned int> ScoreHandler::load_scores() const
     {
-        std::ifstream inFile(filename, std::ios::binary);
-        if (!inFile)
+        std::ifstream in_file(filename, std::ios::binary);
+        if (!in_file)
         {
             std::cerr << "Error opening file for reading." << std::endl;
             return {};
         }
         std::vector<unsigned int> scores;
         int score;
-        while (inFile.read(reinterpret_cast<char *>(&score), sizeof(score)))
+        while (in_file.read(reinterpret_cast<char *>(&score), sizeof(score)))
         {
             scores.push_back(score);
         }
-        inFile.close();
+        in_file.close();
         return scores;
     }
 
