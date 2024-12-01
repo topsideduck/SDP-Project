@@ -1,7 +1,4 @@
-// score_handler.cpp
-
 #include "src/util/score_handler.h"
-
 #include <fstream>
 #include <iostream>
 #include <vector>
@@ -9,18 +6,18 @@
 namespace game
 {
     /**
-     * @brief Constructor for the ScoreHandler class.
+     * @brief Constructs a ScoreHandler instance and initializes the score file.
      *
-     * Initializes the score handler by checking if the file exists.
-     * If the file does not exist, it creates a new file and writes default scores to it.
+     * Checks if the specified file exists. If not, creates the file and initializes it
+     * with default scores.
      *
-     * @param filename The name of the file to manage scores.
+     * @param filename The name of the file used for storing scores.
      */
     ScoreHandler::ScoreHandler(const std::string &filename) : filename(filename)
     {
         if (std::ifstream in_file(filename, std::ios::binary); !in_file)
         {
-            // File does not exist, create and initialize it
+            // Create and initialize file with default scores if it doesn't exist
             if (std::ofstream out_file(filename, std::ios::binary); out_file)
             {
                 int default_scores[3] = {0, 0, 0};
@@ -39,18 +36,16 @@ namespace game
     }
 
     /**
-     * @brief Destructor for the ScoreHandler class.
-     *
-     * Cleans up resources associated with the ScoreHandler instance.
+     * @brief Default destructor for the ScoreHandler class.
      */
     ScoreHandler::~ScoreHandler() = default;
 
     /**
-     * @brief Saves a single score to the file.
+     * @brief Appends a new score to the file.
      *
-     * Appends the given score to the score file in binary format.
+     * Writes the given score to the file in binary format.
      *
-     * @param score The score to save.
+     * @param score The score to append to the file.
      */
     void ScoreHandler::save_score(const unsigned int score) const
     {
@@ -65,11 +60,11 @@ namespace game
     }
 
     /**
-     * @brief Loads all scores from the file.
+     * @brief Reads all scores from the file.
      *
-     * Reads all stored scores from the file and returns them in a vector.
+     * Loads all scores stored in the binary file into a vector.
      *
-     * @return A vector of unsigned integers representing the stored scores.
+     * @return A vector containing all stored scores.
      */
     std::vector<unsigned int> ScoreHandler::load_scores() const
     {
@@ -90,10 +85,9 @@ namespace game
     }
 
     /**
-     * @brief Retrieves the last three scores.
+     * @brief Retrieves the last three scores stored in the file.
      *
-     * Returns the last three scores stored in the file. If there are fewer than
-     * three scores, all available scores are returned.
+     * If fewer than three scores are available, all scores are returned.
      *
      * @return A vector containing the last three scores.
      */
@@ -102,16 +96,15 @@ namespace game
         std::vector<unsigned int> scores = load_scores();
         if (scores.size() <= 3)
         {
-            return scores; // If there are 3 or fewer scores, return all of them
+            return scores;
         }
-        return {scores.end() - 3, scores.end()}; // Get the last three scores
+        return {scores.end() - 3, scores.end()};
     }
 
     /**
-     * @brief Retrieves the highest score.
+     * @brief Finds and returns the highest score in the file.
      *
-     * Finds and returns the highest score from the scores stored in the file.
-     * If no scores are available, it returns 0.
+     * If no scores are stored, returns 0.
      *
      * @return The highest score as an unsigned integer.
      */
@@ -120,7 +113,7 @@ namespace game
         std::vector<unsigned int> scores = load_scores();
         if (scores.empty())
         {
-            return 0; // Return 0 if no scores are available
+            return 0;
         }
         return *std::ranges::max_element(scores);
     }
