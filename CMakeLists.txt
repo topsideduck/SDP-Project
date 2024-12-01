@@ -69,8 +69,8 @@ add_library(StudentObjects OBJECT
         src/menu/main_menu.cpp
         src/menu/main_menu.h
 
-        src/menu/play_game_menu.cpp
-        src/menu/play_game_menu.h
+#        src/menu/play_game_menu.cpp
+#        src/menu/play_game_menu.h
 
         src/menu/instructions_menu.cpp
         src/menu/instructions_menu.h
@@ -117,6 +117,8 @@ add_library(StudentObjects OBJECT
 
         src/util/audio_manager.cpp
         src/util/audio_manager.h
+        src/menu/music_picker_menu.cpp
+        src/menu/music_picker_menu.h
 )
 
 # Link the final executable
