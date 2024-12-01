@@ -4,30 +4,45 @@
 
 #include "src/menu/main_menu.h"          // Include the header for the MainMenu class
 
+#include <thread>
 #include "src/gameplay/arrow.h"
 #include "src/lib/FEHImages.h"           // For displaying images on the LCD
 #include "src/menu/menus.h"              // Include the Menus enum
 #include "src/util/constants.h"          // Constants for button positions and sizes
 #include "src/util/input.h"              // For handling input
 #include "src/util/play_dance.h"
-#include "thread"
 
 namespace game
 {
     /**
      * @brief Default constructor for the MainMenu class.
+     *
+     * Initializes the MainMenu object. This is a default constructor and doesn't
+     * require any specific initialization steps.
      */
     MainMenu::MainMenu() = default;
 
     /**
      * @brief Destructor for the MainMenu class.
+     *
+     * Cleans up any resources (if necessary) when the MainMenu object is destroyed.
+     * In this case, no specific cleanup is required.
      */
     MainMenu::~MainMenu() = default;
 
+    /**
+     * @brief Handles the animation of a dance sequence in the main menu.
+     *
+     * This function continuously plays a dance animation on the screen as long as the
+     * `should_i_dance` flag is true. The dance animation is managed through the `play_dance` function.
+     *
+     * @param should_i_dance A pointer to an atomic boolean flag that determines whether the dance should continue.
+     */
     void MainMenu::main_menu_dance(const std::atomic<bool> *should_i_dance)
     {
         int dance_counter = 1;
 
+        // Play dance as long as should_i_dance is true
         while (*should_i_dance)
         {
             play_dance(ArrowDirection::Sitting, &dance_counter, MAIN_MENU_DANCE_FRAME_X_COORDINATE,
@@ -35,13 +50,12 @@ namespace game
         }
     }
 
-
     /**
      * @brief Displays the main menu and processes user input to navigate to other menus.
      *
-     * This method draws the main menu and listens for touch input to navigate to
-     * different sub-menus (e.g., play game, instructions, controls, statistics, credits, quit).
-     * It detects the specific button clicked and then transitions to the respective menu.
+     * This method clears the LCD screen, draws the main menu image, and waits for the user
+     * to interact with one of the buttons. Based on the button clicked, the function returns
+     * the appropriate menu to navigate to.
      */
     void MainMenu::draw_main_menu()
     {
@@ -56,13 +70,23 @@ namespace game
         LCD.Update();
     }
 
+    /**
+     * @brief Handles user input for the main menu.
+     *
+     * This method monitors touchscreen input and checks if the user clicks on any of the
+     * menu buttons (e.g., Play Game, Instructions, Controls, etc.). It triggers the appropriate
+     * menu transition based on the user's input.
+     *
+     * @return The menu to navigate to based on the user's selection.
+     */
     Menus MainMenu::handle_main_menu_input()
     {
         std::atomic<bool> should_i_dance = true;
 
+        // Create a new thread to handle the dance animation
         std::thread dance_thread(main_menu_dance, &should_i_dance);
 
-        // Monitor user touch input continuously
+        // Continuously monitor user input
         while (true)
         {
             // Get the coordinates of the user's touch input
@@ -74,9 +98,9 @@ namespace game
                 y_coordinate >= MAIN_MENU_PLAY_GAME_BUTTON_Y_COORDINATE &&
                 y_coordinate <= MAIN_MENU_PLAY_GAME_BUTTON_Y_COORDINATE + MAIN_MENU_PLAY_GAME_BUTTON_Y_SIZE)
             {
-                should_i_dance = false;
-                dance_thread.join();
-                return Menus::MusicPickerMenu;
+                should_i_dance = false; // Stop the dance animation
+                dance_thread.join(); // Wait for the dance thread to finish
+                return Menus::MusicPickerMenu; // Navigate to the music picker menu
             }
 
             // Check if the user clicked the Instructions button
@@ -87,7 +111,7 @@ namespace game
             {
                 should_i_dance = false;
                 dance_thread.join();
-                return Menus::InstructionsMenu;
+                return Menus::InstructionsMenu; // Navigate to the instructions menu
             }
 
             // Check if the user clicked the Controls button
@@ -98,7 +122,7 @@ namespace game
             {
                 should_i_dance = false;
                 dance_thread.join();
-                return Menus::ControlsMenu;
+                return Menus::ControlsMenu; // Navigate to the controls menu
             }
 
             // Check if the user clicked the Statistics button
@@ -109,7 +133,7 @@ namespace game
             {
                 should_i_dance = false;
                 dance_thread.join();
-                return Menus::StatisticsMenu;
+                return Menus::StatisticsMenu; // Navigate to the statistics menu
             }
 
             // Check if the user clicked the Credits button
@@ -120,7 +144,7 @@ namespace game
             {
                 should_i_dance = false;
                 dance_thread.join();
-                return Menus::CreditsMenu;
+                return Menus::CreditsMenu; // Navigate to the credits menu
             }
 
             // Check if the user clicked the Quit button
@@ -131,10 +155,10 @@ namespace game
             {
                 should_i_dance = false;
                 dance_thread.join();
-                return Menus::QuitMenu;
+                return Menus::QuitMenu; // Navigate to the quit menu
             }
 
-            LCD.Update();
+            LCD.Update(); // Update the LCD to show any changes
         }
     }
 } // namespace game
