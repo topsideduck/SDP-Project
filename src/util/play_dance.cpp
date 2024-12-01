@@ -10,7 +10,7 @@
 #include "filesystem"
 
 
-void play_dance(const ArrowDirection direction, int *dance_counter)
+void play_dance(const ArrowDirection direction, int *dance_counter, int x_coordinate, int y_coordinate, int update_rate)
 {
     std::string dance_frame_base_file_name;
     int number_of_dance_frames{};
@@ -55,15 +55,15 @@ void play_dance(const ArrowDirection direction, int *dance_counter)
     }
 
     const std::filesystem::path dance_frame_file = dance_frame_base_file_name + std::to_string(
-                                                       (*dance_counter) / DANCE_ITERATIONS_BETWEEN_FRAMES + 1) + ".png";
+                                                       (*dance_counter) / update_rate + 1) + ".png";
     const std::filesystem::path result = DANCE_FRAMES_PATH / dance_frame_file;
 
     FEHImage dance_frame{result.string().c_str()};
-    dance_frame.Draw(DANCE_FRAME_X_COORDINATE, DANCE_FRAME_Y_COORDINATE);
+    dance_frame.Draw(x_coordinate, y_coordinate);
 
     (*dance_counter)++;
 
-    if (*dance_counter >= DANCE_ITERATIONS_BETWEEN_FRAMES * number_of_dance_frames)
+    if (*dance_counter >= update_rate * number_of_dance_frames)
     {
         *dance_counter = 1;
     }

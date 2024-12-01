@@ -7,6 +7,6 @@
 
 #include "src/gameplay/arrow.h"
 
-void play_dance(const ArrowDirection direction, int *dance_counter);
+void play_dance(const ArrowDirection direction, int *dance_counter, int x_coordinate, int y_coordinate, int update_rate);
 
 #endif //PLAY_DANCE_H
