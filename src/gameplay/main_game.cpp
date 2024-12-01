@@ -20,7 +20,7 @@ namespace game
 
     unsigned int MainGame::main_loop(const std::string &music_audio_file_path, const std::string &music_info_file_path)
     {
-        unsigned int score = 1;
+        unsigned int score = 0;
 
         unsigned int random_arrow_generation_index = 0;
         unsigned int random_arrow_generation_delay = 0;
