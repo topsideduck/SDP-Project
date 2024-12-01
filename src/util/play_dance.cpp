@@ -41,10 +41,16 @@ void play_dance(const ArrowDirection direction, int *dance_counter)
             number_of_dance_frames = DANCE_RIGHT_NUMBER_OF_FRAMES;
             break;
         }
-        case (ArrowDirection::None):
+        case (ArrowDirection::Standing):
         {
             dance_frame_base_file_name = DANCE_STANDING_BASE_FILE_NAME;
             number_of_dance_frames = DANCE_STANDING_NUMBER_OF_FRAMES;
+            break;
+        }
+        case (ArrowDirection::Sitting):
+        {
+            dance_frame_base_file_name = DANCE_SITTING_BASE_FILE_NAME;
+            number_of_dance_frames = DANCE_SITTING_NUMBER_OF_FRAMES;
         }
     }
 
