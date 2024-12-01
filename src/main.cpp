@@ -10,6 +10,7 @@
 #include "src/menu/statistics_menu.h"
 #include "src/util/audio_manager.h"
 #include "util/constants.h"
+#include "util/score_handler.h"
 
 
 [[noreturn]] int main()
@@ -21,8 +22,9 @@
     std::string music_audio_file_path;
     std::string music_info_file_path;
 
-    unsigned int final_score {};
+    unsigned int final_score{};
 
+    const game::ScoreHandler score_handler {SCORES_FILE_PATH};
 
     while (true)
     {
@@ -93,6 +95,8 @@
             {
                 final_score = game::MainGame::main_loop(music_audio_file_path, music_info_file_path);
 
+                score_handler.save_score(final_score);
+
                 current_menu = Menus::ScoreMenu;
 
                 break;
@@ -114,7 +118,7 @@
             {
                 menu_audio_manager.play();
 
-                game::ScoreMenu::draw_score_menu(final_score, final_score);
+                game::ScoreMenu::draw_score_menu(final_score, score_handler.get_high_score());
                 current_menu = game::ScoreMenu::handle_score_menu_input();
 
                 menu_audio_manager.stop();
@@ -125,7 +129,8 @@
             {
                 menu_audio_manager.play();
 
-                game::StatisticsMenu::draw_statistics_menu();
+                game::StatisticsMenu::draw_statistics_menu(score_handler.get_high_score(),
+                                                           score_handler.get_last_three_scores());
                 current_menu = game::StatisticsMenu::handle_statistics_menu_input();
 
                 menu_audio_manager.stop();
