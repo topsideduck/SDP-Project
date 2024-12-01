@@ -18,7 +18,7 @@ namespace game
 
     MainGame::~MainGame() = default;
 
-    void MainGame::main_loop(const std::string &music_audio_file_path, const std::string &music_info_file_path)
+    unsigned int MainGame::main_loop(const std::string &music_audio_file_path, const std::string &music_info_file_path)
     {
         unsigned int score = 1;
 
@@ -108,5 +108,7 @@ namespace game
         }
 
         game_audio_manager.stop();
+
+        return score;
     }
 } // game
