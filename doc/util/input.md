@@ -1,16 +1,32 @@
-# Input
+## Input Utility
 
-## 1. Purpose:
+### Overview
+The `Input` utility provides a simple way to retrieve touchscreen input coordinates using the FEHLCD library. It waits for a touch event, captures the x and y coordinates, and ensures that only the first touch is processed.
 
-- `get_input_coordinates()` retrieves touch input from a screen and returns the x and y coordinates as a tuple. It
-  ensures a clean touch input by waiting for the touch to end before proceeding.
+### Files
+1. **input.cpp**: Implements the `get_input_coordinates` function for detecting touchscreen events and retrieving the coordinates.
+2. **input.h**: Declares the `get_input_coordinates` function.
 
-## 2. Code Highlights:
+### Functionality
+#### `std::tuple<float, float> get_input_coordinates()`
+- Waits for a touch event on the screen.
+- Captures the x and y coordinates of the first touch.
+- Waits for the touch to be released to avoid processing lingering touch data.
+- Returns the coordinates as a tuple of two floats.
 
-- **input.cpp** contains the implementation of the function.
-- **input.h** declares the function with a concise comment for the header documentation.
+### Usage
+1. Include `input.h` in your project.
+2. Call `get_input_coordinates()` to get the x and y coordinates of the next touch event.
 
-## 3. Workflow:
+### Example
+```cpp
+#include "src/util/input.h"
+#include <iostream>
 
-- The implementation relies on the `FEHLCD` library for detecting touch input.
-- Touch coordinates are captured and lingering touch events are discarded using separate loops.
+int main()
+{
+    auto [x, y] = get_input_coordinates();
+    std::cout << "Touch detected at: (" << x << ", " << y << ")" << std::endl;
+    return 0;
+}
+```
