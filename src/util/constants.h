@@ -181,7 +181,7 @@
 // FONT
 
 #define FONT_NUMBER_BASE_FILE_NAME "number_"
-#define FONT_NUMBER_FILE_PATH "assets/font/numbers/"
+#define FONT_NUMBER_FILE_PATH "assets/numbers/"
 #define FONT_NUMBER_X_SIZE 15
 #define FONT_NUMBER_Y_SIZE 20
 
