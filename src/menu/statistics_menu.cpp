@@ -23,16 +23,28 @@ namespace game
      */
     StatisticsMenu::~StatisticsMenu() = default;
 
+    /**
+     * @brief Displays a numeric score on the screen at a specified Y-coordinate.
+     *
+     * This function breaks down the given score into individual digits,
+     * loads corresponding image files for each digit, and draws them centered
+     * horizontally at the specified Y-coordinate.
+     *
+     * @param score The numeric score to display.
+     * @param y_coordinate The Y-coordinate where the score should be drawn.
+     */
     void StatisticsMenu::display_score(unsigned int score, const int y_coordinate)
     {
         std::vector<unsigned int> numbers;
 
+        // If score is zero, add a single digit '0' to the vector
         if (score == 0)
         {
             numbers.push_back(0);
         }
         else
         {
+            // Extract digits from the score and store them in reverse order
             while (score > 0)
             {
                 numbers.push_back(score % 10);
@@ -40,27 +52,36 @@ namespace game
             }
         }
 
+        // Reverse the digits to restore their correct order
         std::ranges::reverse(numbers);
 
+        // Calculate starting X-coordinate to center the score on the screen
         int current_draw_x_coordinate = (320 - (numbers.size() * FONT_NUMBER_X_SIZE)) / 2;
 
-        for (const unsigned int i: numbers)
+        // Iterate through each digit, load its respective image, and draw it
+        for (const unsigned int digit: numbers)
         {
-            std::filesystem::path number_file = FONT_NUMBER_BASE_FILE_NAME + std::to_string(i) + ".png";
+            std::filesystem::path number_file = FONT_NUMBER_BASE_FILE_NAME + std::to_string(digit) + ".png";
             std::filesystem::path result = FONT_NUMBER_FILE_PATH / number_file;
 
+            // Load and draw the image for the current digit
             FEHImage number{result.string().c_str()};
             number.Draw(current_draw_x_coordinate, y_coordinate);
 
+            // Move to the next position for the subsequent digit
             current_draw_x_coordinate += FONT_NUMBER_X_SIZE;
         }
     }
 
     /**
-     * @brief Displays the statistics menu and handles user input to return to the main menu.
+     * @brief Draws the statistics menu screen, displaying the high score and the last three scores.
      *
-     * This method draws the statistics menu on the screen and listens for user touch input.
-     * If the user clicks the "Back" button, it navigates back to the main menu.
+     * This method clears the screen, loads the statistics menu image, and displays
+     * the high score along with the last three scores at their respective Y-coordinates.
+     *
+     * @param high_score The player's highest score.
+     * @param last_three_scores A vector containing the last three scores,
+     *                          with the most recent score at the end.
      */
     void StatisticsMenu::draw_statistics_menu(const unsigned int high_score,
                                               const std::vector<unsigned int> &last_three_scores)
@@ -68,33 +89,43 @@ namespace game
         // Clear the LCD screen
         LCD.Clear();
 
-        // Load and draw the statistics menu image
+        // Load and draw the statistics menu background image
         FEHImage statistics_menu_image{STATISTICS_MENU_IMAGE_FILE_PATH};
         statistics_menu_image.Draw(0, 0);
 
+        // Display the high score and last three scores at their respective positions
         display_score(high_score, STATISTICS_MENU_HIGH_SCORE_Y_COORDINATE);
         display_score(last_three_scores[2], STATISTICS_MENU_LAST_1_SCORE_Y_COORDINATE);
         display_score(last_three_scores[1], STATISTICS_MENU_LAST_2_SCORE_Y_COORDINATE);
         display_score(last_three_scores[0], STATISTICS_MENU_LAST_3_SCORE_Y_COORDINATE);
 
-        // Update the LCD display to show the menu image
+        // Update the screen to reflect the changes
         LCD.Update();
     }
 
+    /**
+     * @brief Handles user input in the statistics menu.
+     *
+     * This method continuously monitors for touch input. If the user clicks the "Back" button,
+     * it returns the main menu enum.
+     *
+     * @return Menus::MainMenu if the "Back" button is clicked.
+     */
     Menus StatisticsMenu::handle_statistics_menu_input()
     {
-        // Monitor user input in an infinite loop
+        // Continuously check for user input
         while (true)
         {
-            // Get the coordinates of the user's touch input
+            // Retrieve the coordinates of the user's touch input
             auto [x_coordinate, y_coordinate] = get_input_coordinates();
 
-            // Check if the user clicked the "Back" button
+            // Check if the touch input falls within the bounds of the "Back" button
             if (x_coordinate >= STATISTICS_MENU_BACK_BUTTON_X_COORDINATE &&
                 x_coordinate <= STATISTICS_MENU_BACK_BUTTON_X_COORDINATE + STATISTICS_MENU_BACK_BUTTON_X_SIZE &&
                 y_coordinate >= STATISTICS_MENU_BACK_BUTTON_Y_COORDINATE &&
                 y_coordinate <= STATISTICS_MENU_BACK_BUTTON_Y_COORDINATE + STATISTICS_MENU_BACK_BUTTON_Y_SIZE)
             {
+                // Return to the main menu
                 return Menus::MainMenu;
             }
         }
