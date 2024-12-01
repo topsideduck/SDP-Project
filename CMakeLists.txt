@@ -120,6 +120,9 @@ add_library(StudentObjects OBJECT
 
         src/util/audio_manager.cpp
         src/util/audio_manager.h
+
+        src/util/score_handler.cpp
+        src/util/score_handler.h
 )
 
 # Link the final executable
