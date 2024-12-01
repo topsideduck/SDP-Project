@@ -1,9 +1,4 @@
-//
-// Created by Harikeshav R on 11/19/24.
-//
-
 #include "src/menu/controls_menu.h"  // Include the header file for ControlsMenu class
-
 #include "src/lib/FEHImages.h"      // For handling images with FEHImage class
 #include "src/menu/menus.h"
 #include "src/util/constants.h"     // For constants like file paths and button coordinates
@@ -13,20 +8,24 @@ namespace game
 {
     /**
      * @brief Default constructor for the ControlsMenu class.
+     *
+     * Initializes a ControlsMenu instance with no specific functionality required
+     * during construction.
      */
     ControlsMenu::ControlsMenu() = default;
 
     /**
-     * @brief Destructor for the ControlsMenu class.
+     * @brief Default destructor for the ControlsMenu class.
+     *
+     * Cleans up any resources associated with the ControlsMenu instance.
      */
     ControlsMenu::~ControlsMenu() = default;
 
     /**
-     * @brief Draws the controls menu on the LCD and handles navigation to the main menu.
+     * @brief Displays the controls menu on the LCD screen.
      *
-     * This method displays the controls menu background image on the screen. It waits for user input
-     * to determine if the "Back" button is pressed. When the back button is clicked, the method
-     * navigates back to the main menu.
+     * Renders the controls menu background image onto the screen and updates the display.
+     * This function prepares the controls menu interface for user interaction.
      */
     void ControlsMenu::draw_controls_menu()
     {
@@ -41,6 +40,14 @@ namespace game
         LCD.Update();
     }
 
+    /**
+     * @brief Handles user input in the controls menu.
+     *
+     * Waits for the user to interact with the controls menu interface. If the "Back" button is pressed,
+     * navigates to the main menu by returning the appropriate menu state.
+     *
+     * @return Menus::MainMenu if the "Back" button is clicked.
+     */
     Menus ControlsMenu::handle_controls_menu_input()
     {
         // Continuously wait for user interaction
@@ -55,10 +62,8 @@ namespace game
                 y_coordinate >= CONTROLS_MENU_BACK_BUTTON_Y_COORDINATE &&
                 y_coordinate <= CONTROLS_MENU_BACK_BUTTON_Y_COORDINATE + CONTROLS_MENU_BACK_BUTTON_Y_SIZE)
             {
-                // back_to_main_menu_clicked = true;
-                // break; // Exit the loop
-                return Menus::MainMenu;
+                return Menus::MainMenu; // Navigate to the main menu
             }
         }
     }
-} // game
+} // namespace game

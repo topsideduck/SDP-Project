@@ -1,25 +1,22 @@
-//
-// Created by Harikeshav R on 11/20/24.
-//
-
 #ifndef CONTROLS_MENU_H
 #define CONTROLS_MENU_H
+
 #include "menus.h"
 
 namespace game
 {
     /**
      * @class ControlsMenu
-     * @brief Handles the controls menu screen and its navigation functionality.
+     * @brief Manages the controls menu interface and user navigation.
      *
-     * This class manages the rendering of the controls menu interface, including
-     * displaying the controls menu image and navigating back to the main menu.
+     * The ControlsMenu class handles the rendering of the controls menu screen, including
+     * displaying the interface image and detecting user input for navigation back to the main menu.
      */
     class ControlsMenu
     {
     public:
         /**
-         * @brief Constructor for the ControlsMenu class.
+         * @brief Constructs a ControlsMenu instance.
          */
         ControlsMenu();
 
@@ -29,13 +26,21 @@ namespace game
         ~ControlsMenu();
 
         /**
-         * @brief Displays the controls menu and handles user interaction.
+         * @brief Draws the controls menu interface on the LCD screen.
          *
-         * This static method draws the controls menu interface on the screen,
-         * listens for user input, and handles the transition back to the main menu.
+         * Clears the LCD, renders the controls menu image, and updates the display
+         * to prepare for user interaction.
          */
         static void draw_controls_menu();
 
+        /**
+         * @brief Handles user input for the controls menu.
+         *
+         * Waits for user interaction with the controls menu. If the "Back" button is pressed,
+         * transitions to the main menu.
+         *
+         * @return Menus::MainMenu when navigation to the main menu is triggered.
+         */
         static Menus handle_controls_menu_input();
     };
 } // namespace game
