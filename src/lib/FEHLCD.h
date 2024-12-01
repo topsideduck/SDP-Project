@@ -8,8 +8,6 @@
 #include <string>
 #include "tigr.h"
 #include "LCDColors.h"
-#include "src/gameplay/main_game.h"
-
 
 #define LCD_WIDTH 320
 #define LCD_HEIGHT 240
