@@ -1,6 +1,6 @@
-#include "src/menu/controls_menu.h"  // Include the header file for ControlsMenu class
+#include "src/menu/controls_menu.h" // Include the header file for ControlsMenu class
 #include "src/lib/FEHImages.h"      // For handling images with FEHImage class
-#include "src/menu/menus.h"
+#include "src/menu/menus.h"         // Include the Menus enum
 #include "src/util/constants.h"     // For constants like file paths and button coordinates
 #include "src/util/input.h"         // For touchscreen input handling
 

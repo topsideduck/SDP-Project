@@ -1,7 +1,7 @@
 #ifndef CONTROLS_MENU_H
 #define CONTROLS_MENU_H
 
-#include "menus.h"
+#include "src/menu/menus.h"   // Include the Menus enum
 
 namespace game
 {
