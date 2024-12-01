@@ -1,25 +1,22 @@
-//
-// Created by Harikeshav R on 11/20/24.
-//
-
 #ifndef CREDITS_MENU_H
 #define CREDITS_MENU_H
-#include "menus.h"
+
+#include "src/menu/menus.h"
 
 namespace game
 {
     /**
      * @class CreditsMenu
-     * @brief Handles the credits menu screen and its functionality.
+     * @brief Manages the credits menu interface and navigation functionality.
      *
-     * This class is responsible for displaying the credits menu, which includes playing
-     * a video of sequential frames. It also provides navigation back to the main menu.
+     * The CreditsMenu class is responsible for playing a video of sequential frames
+     * as part of the credits display. It also facilitates navigation back to the main menu.
      */
     class CreditsMenu
     {
     public:
         /**
-         * @brief Constructor for the CreditsMenu class.
+         * @brief Constructs a CreditsMenu instance.
          */
         CreditsMenu();
 
@@ -29,15 +26,22 @@ namespace game
         ~CreditsMenu();
 
         /**
-         * @brief Displays the credits menu and handles user interaction.
+         * @brief Plays the credits menu video on the LCD screen.
          *
-         * This static method displays the credits menu video, listens for user input,
-         * and transitions to the main menu when the "Back" button is clicked.
+         * Displays sequential frames of the credits video from a specified folder
+         * and prepares for user interaction.
          */
         static void draw_credits_menu();
 
+        /**
+         * @brief Handles user input for the credits menu.
+         *
+         * Waits for user interaction. If the "Back" button is clicked, transitions to the main menu.
+         *
+         * @return Menus::MainMenu when navigation to the main menu is triggered.
+         */
         static Menus handle_credits_menu_input();
     };
-} // game
+} // namespace game
 
 #endif // CREDITS_MENU_H

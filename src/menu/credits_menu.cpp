@@ -1,9 +1,4 @@
-//
-// Created by Harikeshav R on 11/20/24.
-//
-
 #include "src/menu/credits_menu.h"  // Include the header for the CreditsMenu class
-
 #include "src/lib/FEHLCD.h"         // For clearing and updating the screen
 #include "src/menu/menus.h"         // Include the Menus enum
 #include "src/util/constants.h"     // For predefined constants like paths and button coordinates
@@ -14,20 +9,25 @@ namespace game
 {
     /**
      * @brief Default constructor for the CreditsMenu class.
+     *
+     * Initializes a CreditsMenu instance with no specific functionality required
+     * during construction.
      */
     CreditsMenu::CreditsMenu() = default;
 
     /**
-     * @brief Destructor for the CreditsMenu class.
+     * @brief Default destructor for the CreditsMenu class.
+     *
+     * Cleans up any resources associated with the CreditsMenu instance.
      */
     CreditsMenu::~CreditsMenu() = default;
 
     /**
-     * @brief Draws the credits menu and handles user interaction.
+     * @brief Plays the credits video on the LCD screen.
      *
-     * This method displays the credits video using sequential image frames. After the video
-     * ends, it waits for user input to detect if the "Back" button is clicked. When the back
-     * button is pressed, the method navigates back to the main menu.
+     * This method renders the credits video by displaying sequential image frames
+     * from a specified folder path. It prepares the interface for user interaction
+     * after the video has ended.
      */
     void CreditsMenu::draw_credits_menu()
     {
@@ -39,9 +39,12 @@ namespace game
     }
 
     /**
-     * @brief Opens the main menu by calling its draw method.
+     * @brief Handles user input in the credits menu.
      *
-     * This method transitions the screen to the main menu interface.
+     * Waits for the user to interact with the screen. If the "Back" button is pressed,
+     * transitions to the main menu by returning the appropriate menu state.
+     *
+     * @return Menus::MainMenu if the "Back" button is clicked.
      */
     Menus CreditsMenu::handle_credits_menu_input()
     {
@@ -57,8 +60,8 @@ namespace game
                 y_coordinate >= CREDITS_MENU_BACK_BUTTON_Y_COORDINATE &&
                 y_coordinate <= CREDITS_MENU_BACK_BUTTON_Y_COORDINATE + CREDITS_MENU_BACK_BUTTON_Y_SIZE)
             {
-                return Menus::MainMenu;
+                return Menus::MainMenu; // Navigate to the main menu
             }
         }
     }
-} // game
+} // namespace game
