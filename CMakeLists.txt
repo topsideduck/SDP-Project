@@ -48,6 +48,8 @@ set(LIBRARY_SRCS
 
         src/lib/tigr.c
         src/lib/tigr.h
+
+        src/lib/miniaudio.h
 )
 
 # Compile the library object files
@@ -112,6 +114,9 @@ add_library(StudentObjects OBJECT
 
         src/util/play_video.cpp
         src/util/play_video.h
+
+        src/util/audio_manager.cpp
+        src/util/audio_manager.h
 )
 
 # Link the final executable
