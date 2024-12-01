@@ -80,6 +80,8 @@
 
             case Menus::MusicPickerMenu:
             {
+                menu_audio_manager.play();
+
                 game::MusicPickerMenu::draw_music_picker_menu();
                 auto [menu, audio_file_path, info_file_path] =
                         game::MusicPickerMenu::handle_music_picker_menu_input();
@@ -87,6 +89,8 @@
                 current_menu = menu;
                 music_audio_file_path = audio_file_path;
                 music_info_file_path = info_file_path;
+
+                menu_audio_manager.stop();
 
                 break;
             }
