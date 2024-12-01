@@ -14,6 +14,7 @@ enum Menus
     MusicPickerMenu,
     PlayGameMenu,
     QuitMenu,
+    ScoreMenu,
     StatisticsMenu,
 };
 
