@@ -1,9 +1,4 @@
-//
-// Created by Harikeshav R on 11/19/24.
-//
-
 #include "src/menu/instructions_menu.h" // Include the header for the InstructionsMenu class
-
 #include "src/lib/FEHImages.h"         // For managing images with FEHImage class
 #include "src/menu/menus.h"            // Include the Menus enum
 #include "src/util/constants.h"        // For predefined constants such as file paths and button coordinates
@@ -22,10 +17,10 @@ namespace game
     InstructionsMenu::~InstructionsMenu() = default;
 
     /**
-     * @brief Draws the instructions menu and handles user interaction.
+     * @brief Displays the instructions menu on the LCD screen.
      *
-     * This method displays the instructions menu screen, waits for the user to click
-     * the "Back" button, and navigates to the main menu when the button is clicked.
+     * This method loads and displays the instructions menu image on the screen
+     * and prepares the interface for user input.
      */
     void InstructionsMenu::draw_instructions_menu()
     {
@@ -36,19 +31,27 @@ namespace game
         FEHImage instructions_menu_image{INSTRUCTIONS_MENU_IMAGE_FILE_PATH};
         instructions_menu_image.Draw(0, 0);
 
-        // Update the LCD display to show the loaded image
+        // Update the LCD to display the instructions menu
         LCD.Update();
     }
 
+    /**
+     * @brief Handles user interaction in the instructions menu.
+     *
+     * Continuously checks for touch input. If the "Back" button is pressed,
+     * transitions to the main menu.
+     *
+     * @return Menus::MainMenu when the "Back" button is clicked.
+     */
     Menus InstructionsMenu::handle_instructions_menu_input()
     {
-        // Continuously check for user input
+        // Continuously wait for user interaction
         while (true)
         {
-            // Retrieve the coordinates of the user's touch input
+            // Get the user's touch input coordinates
             auto [x_coordinate, y_coordinate] = get_input_coordinates();
 
-            // Check if the touch is within the bounds of the "Back" button
+            // Verify if the touch is within the "Back" button bounds
             if (x_coordinate >= INSTRUCTIONS_MENU_BACK_BUTTON_X_COORDINATE &&
                 x_coordinate <= INSTRUCTIONS_MENU_BACK_BUTTON_X_COORDINATE + INSTRUCTIONS_MENU_BACK_BUTTON_X_SIZE &&
                 y_coordinate >= INSTRUCTIONS_MENU_BACK_BUTTON_Y_COORDINATE &&

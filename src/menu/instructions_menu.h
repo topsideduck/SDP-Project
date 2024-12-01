@@ -1,25 +1,22 @@
-//
-// Created by Harikeshav R on 11/20/24.
-//
-
 #ifndef INSTRUCTIONS_MENU_H
 #define INSTRUCTIONS_MENU_H
-#include "menus.h"
+
+#include "src/menu/menus.h"
 
 namespace game
 {
     /**
      * @class InstructionsMenu
-     * @brief Handles the instructions menu screen and its functionality.
+     * @brief Manages the instructions menu interface and its navigation functionality.
      *
-     * This class provides functionality for displaying the instructions menu,
-     * waiting for user input, and navigating back to the main menu.
+     * The InstructionsMenu class handles displaying the instructions menu and
+     * facilitating navigation back to the main menu.
      */
     class InstructionsMenu
     {
     public:
         /**
-         * @brief Constructor for the InstructionsMenu class.
+         * @brief Constructs an InstructionsMenu instance.
          */
         InstructionsMenu();
 
@@ -29,13 +26,20 @@ namespace game
         ~InstructionsMenu();
 
         /**
-         * @brief Displays the instructions menu and handles user interaction.
+         * @brief Displays the instructions menu screen.
          *
-         * This static method draws the instructions menu screen, listens for
-         * user input, and transitions to the main menu when the "Back" button is clicked.
+         * Loads the instructions menu interface and waits for user input.
          */
         static void draw_instructions_menu();
 
+        /**
+         * @brief Handles user input for the instructions menu.
+         *
+         * Waits for user interaction and transitions to the main menu if
+         * the "Back" button is clicked.
+         *
+         * @return Menus::MainMenu when the user selects the main menu.
+         */
         static Menus handle_instructions_menu_input();
     };
 } // namespace game
