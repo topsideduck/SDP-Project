@@ -33,13 +33,13 @@ namespace game
 
         ArrowManager arrow_manager;
 
-        FEHImage bg{"assets/SCORE.png"};
+        FEHImage background_image{MAIN_GAME_IMAGE_FILE_PATH};
 
         while (true)
         {
             LCD.Clear();
 
-            bg.Draw(0, 0);
+            background_image.Draw(0, 0);
 
             ArrowDirection direction_to_check{};
 
