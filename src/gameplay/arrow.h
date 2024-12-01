@@ -14,7 +14,9 @@ enum ArrowDirection
     Left,
     Right,
     Up,
-    Down
+    Down,
+    Standing,
+    Sitting
 };
 
 
