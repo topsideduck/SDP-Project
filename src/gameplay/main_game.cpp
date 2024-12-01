@@ -71,7 +71,7 @@ namespace game
                 dance_counter = 1;
             }
 
-            play_dance(direction_to_check, &dance_counter);
+            play_dance(direction_to_check, &dance_counter, MAIN_GAME_DANCE_FRAME_X_COORDINATE, MAIN_GAME_DANCE_FRAME_Y_COORDINATE, DANCE_ITERATIONS_BETWEEN_FRAMES);
 
             DisplayScore::draw_score_on_screen(score);
 
