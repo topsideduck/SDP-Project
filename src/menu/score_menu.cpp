@@ -22,10 +22,17 @@ namespace game
     {
         std::vector<unsigned int> numbers;
 
-        while (score > 0)
+        if (score == 0)
         {
-            numbers.push_back(score % 10);
-            score /= 10;
+            numbers.push_back(0);
+        }
+        else
+        {
+            while (score > 0)
+            {
+                numbers.push_back(score % 10);
+                score /= 10;
+            }
         }
 
         std::ranges::reverse(numbers);
@@ -49,7 +56,7 @@ namespace game
         // Clear the LCD screen
         LCD.Clear();
 
-        if (score > high_score)
+        if (score >= high_score)
         {
             FEHImage score_menu_image{SCORE_MENU_NEW_HIGH_SCORE_IMAGE_FILE_PATH};
             score_menu_image.Draw(0, 0);

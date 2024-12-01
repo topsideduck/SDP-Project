@@ -27,10 +27,17 @@ namespace game
     {
         std::vector<unsigned int> numbers;
 
-        while (score > 0)
+        if (score == 0)
         {
-            numbers.push_back(score % 10);
-            score /= 10;
+            numbers.push_back(0);
+        }
+        else
+        {
+            while (score > 0)
+            {
+                numbers.push_back(score % 10);
+                score /= 10;
+            }
         }
 
         std::ranges::reverse(numbers);
@@ -55,7 +62,8 @@ namespace game
      * This method draws the statistics menu on the screen and listens for user touch input.
      * If the user clicks the "Back" button, it navigates back to the main menu.
      */
-    void StatisticsMenu::draw_statistics_menu(const unsigned int high_score, const std::vector<unsigned int>& last_three_scores)
+    void StatisticsMenu::draw_statistics_menu(const unsigned int high_score,
+                                              const std::vector<unsigned int> &last_three_scores)
     {
         // Clear the LCD screen
         LCD.Clear();
