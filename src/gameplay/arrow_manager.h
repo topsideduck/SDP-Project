@@ -23,9 +23,10 @@ namespace game
         std::random_device random_device;
         std::mt19937 random_number_generator{random_device()};
         std::uniform_int_distribution<std::mt19937::result_type> random_arrow_generator_distribution{0, 3};
-        std::uniform_int_distribution<std::mt19937::result_type> random_time_delay_between_generation_distribution{
-            RANDOM_TIME_DELAY_GENERATOR_START_BOUND, RANDOM_TIME_DELAY_GENERATOR_END_BOUND
-        };
+
+        unsigned int random_time_delay_generator_start_bound = RANDOM_TIME_DELAY_GENERATOR_START_BOUND;
+        unsigned int random_time_delay_generator_end_bound = RANDOM_TIME_DELAY_GENERATOR_END_BOUND;
+
 
     public:
         ArrowManager();
@@ -35,6 +36,8 @@ namespace game
         void create_random_arrow();
 
         unsigned int create_random_generation_delay();
+
+        void update_random_time_delay_generation_bounds();
 
         void move_all_arrows(float delta_x, float delta_y) const;
 

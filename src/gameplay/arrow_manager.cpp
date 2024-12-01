@@ -23,8 +23,25 @@ namespace game
 
     unsigned int ArrowManager::create_random_generation_delay()
     {
+        std::uniform_int_distribution random_time_delay_between_generation_distribution{
+            random_time_delay_generator_start_bound, random_time_delay_generator_end_bound
+        };
         return random_time_delay_between_generation_distribution(random_number_generator);
     }
+
+    void ArrowManager::update_random_time_delay_generation_bounds()
+    {
+        if (random_time_delay_generator_start_bound > RANDOM_TIME_DELAY_GENERATOR_MIN_START_BOUND)
+        {
+             random_time_delay_generator_start_bound -= 5;
+        }
+
+        if (random_time_delay_generator_end_bound > RANDOM_TIME_DELAY_GENERATOR_MIN_END_BOUND)
+        {
+            random_time_delay_generator_end_bound -= 5;
+        }
+    }
+
 
     void ArrowManager::move_all_arrows(const float delta_x, const float delta_y) const
     {

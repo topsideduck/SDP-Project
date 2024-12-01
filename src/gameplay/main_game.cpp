@@ -25,6 +25,8 @@ namespace game
         unsigned int random_arrow_generation_index = 0;
         unsigned int random_arrow_generation_delay = 0;
 
+        unsigned int random_time_delay_generation_bounds_index = 0;
+
         float velocity = 1;
         unsigned int arrow_velocity_change_index = 0;
 
@@ -91,8 +93,14 @@ namespace game
 
             if (velocity <= ARROW_MAX_VELOCITY && arrow_velocity_change_index == ARROW_VELOCITY_CHANGE_DELAY_LOOPS)
             {
-                arrow_velocity_change_index = 0;
                 velocity++;
+                arrow_velocity_change_index = 0;
+            }
+
+            if (random_time_delay_generation_bounds_index == RANDOM_TIME_DELAY_CHANGE_DELAY_LOOPS)
+            {
+                arrow_manager.update_random_time_delay_generation_bounds();
+                random_time_delay_generation_bounds_index = 0;
             }
 
             arrow_manager.move_all_arrows(0, -velocity);
@@ -101,6 +109,7 @@ namespace game
 
             random_arrow_generation_index++;
             arrow_velocity_change_index++;
+            random_time_delay_generation_bounds_index++;
 
             old_direction = direction_to_check;
 
