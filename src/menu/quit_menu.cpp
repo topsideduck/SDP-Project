@@ -1,9 +1,4 @@
-//
-// Created by Harikeshav R on 11/19/24.
-//
-
 #include "src/menu/quit_menu.h" // Include the header for the QuitMenu class
-
 #include "src/lib/FEHImages.h"   // For handling images using FEHImage
 #include "src/menu/menus.h"      // Include the Menus enum
 #include "src/util/constants.h"  // For constants like file paths and button coordinates
@@ -22,10 +17,9 @@ namespace game
     QuitMenu::~QuitMenu() = default;
 
     /**
-     * @brief Displays the quit menu and handles user input to either quit the game or return to the main menu.
+     * @brief Draws the quit menu on the screen.
      *
-     * This method draws the quit menu on the screen and listens for user touch input.
-     * Depending on the user's touch, it either quits the game or returns to the main menu.
+     * This method loads and displays the quit menu image, preparing the interface for user interaction.
      */
     void QuitMenu::draw_quit_menu()
     {
@@ -40,6 +34,13 @@ namespace game
         LCD.Update();
     }
 
+    /**
+     * @brief Handles user interaction with the quit menu.
+     *
+     * Continuously checks for touch input to determine whether the user selects "Stay" or "Quit."
+     *
+     * @return Menus::MainMenu if the user selects "Stay."
+     */
     Menus QuitMenu::handle_quit_menu_input()
     {
         // Monitor user input in an infinite loop
@@ -71,7 +72,7 @@ namespace game
     /**
      * @brief Exits the game.
      *
-     * This method terminates the program by calling exit(0).
+     * This method terminates the program when the "Quit" button is clicked.
      */
     void QuitMenu::quit_game()
     {
