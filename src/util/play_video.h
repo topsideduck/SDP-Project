@@ -1,7 +1,3 @@
-//
-// Created by Harikeshav R on 11/21/24.
-//
-
 #ifndef PLAY_VIDEO_H
 #define PLAY_VIDEO_H
 

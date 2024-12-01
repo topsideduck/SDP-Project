@@ -1,9 +1,4 @@
-//
-// Created by Harikeshav R on 11/21/24.
-//
-
 #include "src/util/play_video.h" // Include custom header file for video playback functionality
-
 #include <filesystem>           // For handling file paths
 #include "src/lib/FEHImages.h"  // For handling image files with FEHImage class
 #include "src/lib/FEHLCD.h"     // For managing LCD display operations
@@ -35,8 +30,8 @@ void play_video(const std::filesystem::path &frames_folder_path, const int numbe
         LCD.Clear();
 
         // Load and draw the current frame
-        FEHImage credits_frame{result.string().c_str()};
-        credits_frame.Draw(0, 0);
+        FEHImage frame_image{result.string().c_str()};
+        frame_image.Draw(0, 0);
 
         // Update the LCD display to show the drawn frame
         LCD.Update();
