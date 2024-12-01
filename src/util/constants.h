@@ -87,20 +87,7 @@
 #define MUSIC_SICKO_MODE_INFO_FILE_PATH "assets/info/sicko_mode.png"
 
 #define MUSIC_CINDERELLA_AUDIO_FILE_PATH "assets/audio/cinderella.mp3"
-#define MUSIC_CINDERELLA_INFO_FILE_PATH "assets/audio/cinderella.png"
-
-#define MUSIC_DING_SOUND_EFFECT_AUDIO_PATH "assets/audio/ding.mp3"
-
-
-// PLAY GAME MENU
-
-#define PLAY_GAME_MENU_IMAGE_FILE_PATH "assets/menus/play_game_menu.png"
-
-// Define play game menu back button dimensions
-#define PLAY_GAME_MENU_BACK_BUTTON_X_COORDINATE 110
-#define PLAY_GAME_MENU_BACK_BUTTON_Y_COORDINATE 196
-#define PLAY_GAME_MENU_BACK_BUTTON_X_SIZE 100
-#define PLAY_GAME_MENU_BACK_BUTTON_Y_SIZE 20
+#define MUSIC_CINDERELLA_INFO_FILE_PATH "assets/info/cinderella.png"
 
 
 // INSTRUCTIONS MENU
@@ -215,7 +202,7 @@
 #define RANDOM_TIME_DELAY_GENERATOR_END_BOUND 50
 
 #define ARROW_MAX_VELOCITY 10
-#define ARROW_VELOCITY_CHANGE_DELAY_LOOPS 600
+#define ARROW_VELOCITY_CHANGE_DELAY_LOOPS 1600
 
 #define MAIN_GAME_IMAGE_FILE_PATH "assets/menus/main_game.png"
 
