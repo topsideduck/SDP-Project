@@ -6,6 +6,7 @@
 #define MAIN_MENU_H
 
 #include "src/menu/menus.h" // Include the Menus enum
+#include "thread"
 
 namespace game
 {
@@ -37,6 +38,8 @@ namespace game
          * handling touch input to determine which menu the user wants to access.
          */
         static void draw_main_menu();
+
+        static void main_menu_dance(const std::atomic<bool> *should_i_dance);
 
         static Menus handle_main_menu_input();
     };
