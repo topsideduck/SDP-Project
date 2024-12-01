@@ -49,8 +49,17 @@ namespace game
         // Clear the LCD screen
         LCD.Clear();
 
-        FEHImage score_menu_image{SCORE_MENU_IMAGE_FILE_PATH};
-        score_menu_image.Draw(0, 0);
+        if (score > high_score)
+        {
+            FEHImage score_menu_image{SCORE_MENU_NEW_HIGH_SCORE_IMAGE_FILE_PATH};
+            score_menu_image.Draw(0, 0);
+        }
+
+        else
+        {
+            FEHImage score_menu_image{SCORE_MENU_IMAGE_FILE_PATH};
+            score_menu_image.Draw(0, 0);
+        }
 
         display_score(score, SCORE_MENU_SCORE_Y_COORDINATE);
         display_score(high_score, SCORE_MENU_HIGH_SCORE_Y_COORDINATE);
