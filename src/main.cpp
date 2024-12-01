@@ -1,5 +1,6 @@
 #include "gameplay/main_game.h"
 #include "menu/music_picker_menu.h"
+#include "menu/score_menu.h"
 #include "src/menu/controls_menu.h"
 #include "src/menu/credits_menu.h"
 #include "src/menu/instructions_menu.h"
@@ -19,6 +20,8 @@
 
     std::string music_audio_file_path;
     std::string music_info_file_path;
+
+    unsigned int final_score {};
 
 
     while (true)
@@ -88,7 +91,11 @@
 
             case Menus::PlayGameMenu:
             {
-                game::MainGame::main_loop(music_audio_file_path, music_info_file_path);
+                final_score = game::MainGame::main_loop(music_audio_file_path, music_info_file_path);
+
+                current_menu = Menus::ScoreMenu;
+
+                break;
             }
 
             case Menus::QuitMenu:
@@ -103,6 +110,17 @@
                 break;
             }
 
+            case Menus::ScoreMenu:
+            {
+                menu_audio_manager.play();
+
+                game::ScoreMenu::draw_score_menu(final_score, final_score);
+                current_menu = game::ScoreMenu::handle_score_menu_input();
+
+                menu_audio_manager.stop();
+
+                break;
+            }
             case Menus::StatisticsMenu:
             {
                 menu_audio_manager.play();
