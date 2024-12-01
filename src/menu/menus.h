@@ -11,6 +11,7 @@ enum Menus
     CreditsMenu,
     InstructionsMenu,
     MainMenu,
+    MusicPickerMenu,
     PlayGameMenu,
     QuitMenu,
     StatisticsMenu,
