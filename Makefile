@@ -1,9 +1,9 @@
 CC = g++
-CPPFLAGS = -MMD -MP -Os -DOBJC_OLD_DISPATCH_PROTOTYPES -g -std=c++20 -stdlib=libc++
+CPPFLAGS = -MMD -MP -Os -DOBJC_OLD_DISPATCH_PROTOTYPES -g -std=c++20 -stdlib=libc++ -I.
 IGNORED_WARNINGS = -w
 INC_DIRS = -I.
-#if new libraries are added, add them here
-OBJS = FEHLCD.o FEHRandom.o FEHSD.o tigr.o FEHUtility.o FEHImages.o
+BUILD_DIR = build
+OBJS = $(addprefix $(BUILD_DIR)/, FEHLCD.o FEHRandom.o FEHSD.o tigr.o FEHUtility.o FEHImages.o)
 
 ifeq ($(OS),Windows_NT)
 	LDFLAGS = -lopengl32 -lgdi32
@@ -18,46 +18,34 @@ else
 	EXEC = game
 endif
 
-# This is a recursive implementation of the wildcard function provided by gnu.
-# We use it to allow students to have an arbitrary source file structure, with multiple source files and folders
-# https://stackoverflow.com/questions/2483182/recursive-wildcards-in-gnu-make/18258352#18258352
 recursiveWildcard=$(foreach d,$(wildcard $(1:=/*)),$(call recursiveWildcard,$d,$2) $(filter $(subst *,%,$2),$d))
 
-# Gets all of the source files (.cpp) in the parent directory and its children folders, 
-# excluding the files we have in here, as those get built in the libraries target.
 STUDENT_CPP_FILES := $(filter-out src/lib/%, $(call recursiveWildcard, src, *.cpp))
 STUDENT_H_FILES := $(filter-out src/lib/%, $(call recursiveWildcard, src, *.h))
+STUDENT_COMPILED_OBJECT_FILES := $(addprefix $(BUILD_DIR)/, $(notdir $(patsubst %.cpp, %.o, $(STUDENT_CPP_FILES))))
 
-# When we compile student .cpp files in the studentFiles target, the .o object files are placed in this directory.
-# So this list, used in linking in the all target below, replaces the .cpp extension from the source files, and then strips the 
-# directory information (since the object files are all built into this directory)
-STUDENT_COMPILED_OBJECT_FILES := $(notdir $(patsubst %.cpp, %.o,$(STUDENT_CPP_FILES)))
-
-all: libraries studentFiles
+all: $(BUILD_DIR) libraries studentFiles
 	$(CC) $(CPPFLAGS) $(OBJS) $(STUDENT_COMPILED_OBJECT_FILES) -o $(EXEC) $(LDFLAGS) $(IGNORED_WARNINGS)
 
+$(BUILD_DIR):
+	mkdir -p $(BUILD_DIR)
+
+$(BUILD_DIR)/%.o: src/lib/%.cpp
+	$(CC) $(IGNORED_WARNINGS) $(INC_DIRS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: src/lib/%.c
+	$(CC) $(IGNORED_WARNINGS) $(INC_DIRS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: %.cpp
+	$(CC) $(IGNORED_WARNINGS) $(INC_DIRS) -c $< -o $@
+
 studentFiles: $(STUDENT_CPP_FILES)
-	$(CC) -std=c++20 $(IGNORED_WARNINGS) $(INC_DIRS) -c $^
+	@for file in $(STUDENT_CPP_FILES); do \
+		obj=$(BUILD_DIR)/$$(basename $$file .cpp).o; \
+		$(CC) $(CPPFLAGS) $(IGNORED_WARNINGS) $(INC_DIRS) -c $$file -o $$obj; \
+	done
 
-libraries: ${OBJS}
-
-FEHLCD.o: src/lib/FEHLCD.cpp src/lib/FEHLCD.h src/lib/FEHUtility.o
-	$(CC) $(IGNORED_WARNINGS) $(INC_DIRS) -c src/lib/FEHLCD.cpp
-
-FEHUtility.o: src/lib/FEHUtility.cpp src/lib/FEHUtility.h
-	$(CC) $(IGNORED_WARNINGS) $(INC_DIRS) -c src/lib/FEHUtility.cpp
-
-FEHRandom.o: src/lib/FEHRandom.cpp src/lib/FEHRandom.h
-	$(CC) $(IGNORED_WARNINGS) $(INC_DIRS) -c src/lib/FEHRandom.cpp
-
-FEHSD.o: src/lib/FEHSD.cpp src/lib/FEHSD.h
-	$(CC) $(IGNORED_WARNINGS) $(INC_DIRS) -c src/lib/FEHSD.cpp
-
-FEHImages.o: src/lib/FEHImages.cpp src/lib/FEHImages.h
-	$(CC) $(IGNORED_WARNINGS) $(INC_DIRS) -c src/lib/FEHImages.cpp
-
-tigr.o: src/lib/tigr.c src/lib/tigr.h
-	$(CC) $(IGNORED_WARNINGS) $(INC_DIRS) -c src/lib/tigr.c
+libraries: $(OBJS)
 
 clean:
-	@rm -f *.o $(EXEC)
+	@rm -rf $(BUILD_DIR) $(EXEC)
